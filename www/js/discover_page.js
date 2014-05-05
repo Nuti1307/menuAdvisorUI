@@ -5,7 +5,6 @@
 // }
 //$("#discoverbutton").click(function(evt)
 function handleDiscover(evt){
-     alert("here");
      setSelectedRestaurant();
      getAllDishFromDB(globalData.restaurantLocuId);
     // $('#discover').click();//("#menu_listing"); 
