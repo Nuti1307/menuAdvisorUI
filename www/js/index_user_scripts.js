@@ -15,13 +15,14 @@
          getMenu(globalData.restaurantLocuId, getMenuCallback);
          activate_subpage("#rate_screen"); 
         });
-        $(".uib_w_6").click(function(evt)
+        $("#discoverbutton").click(function(evt)
         {
+         alert("here");
          setSelectedRestaurant();
          getAllDishFromDB(globalData.restaurantLocuId);
          activate_subpage("#menu_listing"); 
         });
-        $(".uib_w_5").click(function(evt)
+        $("#ratebutton").click(function(evt)
         {
          submitRating();
         });

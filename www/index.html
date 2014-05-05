@@ -77,15 +77,14 @@
         <input type="text" name="restaurantname" id="restaurantname" list="restaurantnamelist"/>
         <datalist id="restaurantnamelist"> 
         </datalist>
-        <a data-role="button" href="#discover">Discover</a>
-        <a data-role="button" href="#rate">Rate</a>
+        <a id="discoverbutton" data-role="button" href="#discover" onclick="handleDiscover()">Discover</a>
+        <a id="ratebutton" data-role="button" href="#rate">Rate</a>
     </div>
     <div data-role="page" id="rate">rate page to do</div>
     <div data-role="page" id="discover">
         <input id="FilterMenuItems" type="text" onkeyup="filter(this)"/>
 		<ol id="discoverPageMenuList">
-            <li>rahul</li>
-            <li>kumar</li>
+            
 		</ol>
     </div>
     <div data-role="page" id="details">details page to do</div>
