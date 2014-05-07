@@ -109,38 +109,42 @@ function populateRatingMenuItem(event)
     document.getElementById("rate_menuList").add(selectBoxOption, null);
 }
 var i=0;
+function ActivateCommentsList(e) 
+{ 
+    var targ;
+    if (e.target) {
+        targ=e.target;
+    }
+    else if (e.srcElement) {
+        targ=e.srcElement;
+    }
+    
+    var menuItemName = targ.getAttribute('data-menuitemsdata-name');
+    var menuItemId = targ.getAttribute('data-menuitemsdata-id');
+    alert(menuItemName);
+    populateMenuComments(menuItemId, menuItemName);
+    //activate_subpage("#menu_detail");
+}
 function insertMenuItemInUIList(menuItem)
 {
     var menuListElement = document.getElementById("discoverPageMenuList");
     var a = document.createElement("a");
     var li = document.createElement("li");    
-    a.innerHTML = "<p style='font-size:15px'>"+menuItem.name+"</p>";
+    a.innerHTML = "<p style='font-size:15px' data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</p>";
     
     //li.data('menuitemsdata', menuItem.name);
     li.id=++i;
-    a.setAttribute('data-menuitemsdata-name', menuItem.name);
-    a.setAttribute('data-menuitemsdata-id', menuItem.id);
+    //a.setAttribute('data-menuitemsdata-name', menuItem.name);
+    //a.setAttribute('data-menuitemsdata-id', menuItem.id);
     if (typeof menuItem.avg_rating != "undefined") {
         a.innerHTML += "<br />";    
         a.innerHTML += "<p>Rating: "+ menuItem.avg_rating + "</p>";   
         
         //a.innerHTML += "<br />";
         a.innerHTML += getPictureHTML(menuItem);       
-        
-        a.addEventListener("mousedown", function(e) { 
-            var targ;
-            if (e.target) {
-                targ=e.target;
-            }
-            else if (e.srcElement) {
-                targ=e.srcElement;
-            }
-            var menuItemName = targ.getAttribute('data-menuitemsdata-name');
-            var menuItemId = targ.getAttribute('data-menuitemsdata-id');
-            
-            populateMenuComments(menuItemId, menuItemName);
-            activate_subpage("#menu_detail");
-        });
+        a.onclick=ActivateCommentsList;
+        a.href="#menu_detail";
+        //a.addEventListener("mousedown", );
         
     }
     else {
@@ -155,12 +159,12 @@ function insertMenuItemInUIList(menuItem)
             getMenu(globalData.restaurantLocuId, getMenuCallback);
             activate_subpage("#rate_screen");
         };*/        
-        a.addEventListener("mousedown", function(event) { 
-            populateRatingMenuItem(event);
-            activate_subpage("#rate_screen");
-        });
+        a.onclick=populateRatingMenuItem;
+        a.href="#rate_screen";
+        //a.addEventListener("mousedown", );
     }
-    
+    a.innerHTML += "<br />";    
+    a.innerHTML += '<button type="button" onmousedown="activateRateScreen(menuItem)" style="color:red;">Write a review.</button>';
     li.appendChild(a);
     menuListElement.appendChild(li);
     //resizePicture2Thumbnail();
