@@ -114,18 +114,18 @@ function insertMenuItemInUIList(menuItem)
     var menuListElement = document.getElementById("discoverPageMenuList");
     var a = document.createElement("a");
     var li = document.createElement("li");    
-    a.innerHTML = "<p style='font-size:15px'>"+menuItem.name+"</p>";
+    a.innerHTML = "<h2>"+menuItem.name+"</h2>";
     
-    //li.data('menuitemsdata', menuItem.name);
     li.id=++i;
     a.setAttribute('data-menuitemsdata-name', menuItem.name);
     a.setAttribute('data-menuitemsdata-id', menuItem.id);
-    if (typeof menuItem.avg_rating != "undefined") {
-        a.innerHTML += "<br />";    
-        a.innerHTML += "<p>Rating: "+ menuItem.avg_rating + "</p>";   
+    if (typeof menuItem.avg_rating != "undefined") { 
+        a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + 2 +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";
+        $('.rateit').rateit();
+        //a.innerHTML += "<p>Rating: "+ menuItem.avg_rating + "</p>";   
         
         //a.innerHTML += "<br />";
-        a.innerHTML += getPictureHTML(menuItem);       
+        a.innerHTML = getPictureHTML(menuItem) + a.innerHTML;
         
         a.addEventListener("mousedown", function(e) { 
             var targ;
