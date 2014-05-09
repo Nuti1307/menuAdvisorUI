@@ -132,7 +132,7 @@ function insertMenuItemInUIList(menuItem)
     var menuListElement = document.getElementById("discoverPageMenuList");
     var a = document.createElement("a");
     var li = document.createElement("li");    
-    a.innerHTML = "<h2 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</p>";
+    a.innerHTML = "<h4 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</h4>";
     //a.innerHTML = "<h2>"+menuItem.name+"</h2>";    
     li.id=++i;
 
@@ -153,7 +153,7 @@ function insertMenuItemInUIList(menuItem)
         a.href="#rate_screen";
         //a.addEventListener("mousedown", );
     }
-    a.innerHTML += "<br />";    
+    //a.innerHTML += "<br />";    
     a.innerHTML += '<button type="button" onmousedown="activateRateScreen(menuItem)" style="color:red;">Write a review.</button>';
     li.appendChild(a);
     menuListElement.appendChild(li);
