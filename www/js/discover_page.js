@@ -125,39 +125,29 @@ function ActivateCommentsList(e)
     var menuItemName = targ.getAttribute('data-menuitemsdata-name');
     var menuItemId = targ.getAttribute('data-menuitemsdata-id');
     populateMenuComments(menuItemId, menuItemName);
-    //activate_subpage("#menu_detail");
 }
 function insertMenuItemInUIList(menuItem)
 {
     var menuListElement = document.getElementById("discoverPageMenuList");
     var a = document.createElement("a");
     var li = document.createElement("li");    
-    a.innerHTML = "<h4 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</h4>";
-    //a.innerHTML = "<h2>"+menuItem.name+"</h2>";    
+    a.innerHTML = "<h4 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</h4>";  
     li.id=++i;
 
-    //a.setAttribute('data-menuitemsdata-name', menuItem.name);
-    //a.setAttribute('data-menuitemsdata-id', menuItem.id);
     if (typeof menuItem.avg_rating != "undefined") { 
         a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";
         $('.rateit').rateit();
-        //a.innerHTML += "<p>Rating: "+ menuItem.avg_rating + "</p>";   
-        //a.innerHTML += "<br />";
-        a.innerHTML += getPictureHTML(menuItem);
+        a.innerHTML = getPictureHTML(menuItem) + a.innerHTML;
         a.onclick=ActivateCommentsList;
         a.href="#menu_detail";    
     }
-    else {
-        //a.innerHTML += "<br />";        
+    else {      
         a.onclick=populateRatingMenuItem;
+        a.innerHTML += '<button type="button" onmousedown="activateRateScreen(menuItem)" style="color:red;">Write a review.</button>';
         a.href="#rate_screen";
-        //a.addEventListener("mousedown", );
-    }
-    //a.innerHTML += "<br />";    
-    a.innerHTML += '<button type="button" onmousedown="activateRateScreen(menuItem)" style="color:red;">Write a review.</button>';
+    } 
     li.appendChild(a);
     menuListElement.appendChild(li);
-    //resizePicture2Thumbnail();
 }
 
 /*$('input').keyup(function() {
