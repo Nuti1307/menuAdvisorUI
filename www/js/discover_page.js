@@ -80,7 +80,10 @@ function getPictureHTML(menuItem)
       async: false,
       dataType: 'json',
       success: function (data) {
-        ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '" onload="resizePicture2Thumbnail()"/>';    
+        if (data[0].picture != "undefined" && data[0].picture.length > 4)
+        {
+            ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '" onload="resizePicture2Thumbnail()"/>';    
+        }
       }
     });
     
@@ -121,8 +124,6 @@ function ActivateCommentsList(e)
     
     var menuItemName = targ.getAttribute('data-menuitemsdata-name');
     var menuItemId = targ.getAttribute('data-menuitemsdata-id');
-    alert(targ);
-    alert(menuItemName);
     populateMenuComments(menuItemId, menuItemName);
     //activate_subpage("#menu_detail");
 }
@@ -138,27 +139,16 @@ function insertMenuItemInUIList(menuItem)
     //a.setAttribute('data-menuitemsdata-name', menuItem.name);
     //a.setAttribute('data-menuitemsdata-id', menuItem.id);
     if (typeof menuItem.avg_rating != "undefined") { 
-        a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + 2 +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";
+        a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";
         $('.rateit').rateit();
         //a.innerHTML += "<p>Rating: "+ menuItem.avg_rating + "</p>";   
-        
         //a.innerHTML += "<br />";
         a.innerHTML += getPictureHTML(menuItem);
         a.onclick=ActivateCommentsList;
         a.href="#menu_detail";    
     }
     else {
-        a.innerHTML += "<br />";    
-        a.innerHTML += '<p style="color:red;">Write a review.</p>';   
-        /*a.onclick = function(event) { 
-            var selectBoxOption = document.createElement("option");
-            selectBoxOption.value = event.target;
-            selectBoxOption.text = event.target;
-            alert(event.target);
-            document.getElementById("rate_menuList").add(selectBoxOption, null);
-            getMenu(globalData.restaurantLocuId, getMenuCallback);
-            activate_subpage("#rate_screen");
-        };*/        
+        //a.innerHTML += "<br />";        
         a.onclick=populateRatingMenuItem;
         a.href="#rate_screen";
         //a.addEventListener("mousedown", );
