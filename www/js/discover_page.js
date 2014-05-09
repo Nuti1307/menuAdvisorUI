@@ -130,10 +130,14 @@ function insertMenuItemInUIList(menuItem)
     var menuListElement = document.getElementById("discoverPageMenuList");
     var a = document.createElement("a");
     var li = document.createElement("li");    
+<<<<<<< HEAD
     a.innerHTML = "<p style='font-size:15px' data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</p>";
+=======
+    a.innerHTML = "<h2>"+menuItem.name+"</h2>";
+>>>>>>> 82e617b2fe227727cdeb3cc93f697e1a161ac82d
     
-    //li.data('menuitemsdata', menuItem.name);
     li.id=++i;
+<<<<<<< HEAD
     //a.setAttribute('data-menuitemsdata-name', menuItem.name);
     //a.setAttribute('data-menuitemsdata-id', menuItem.id);
     if (typeof menuItem.avg_rating != "undefined") {
@@ -145,6 +149,32 @@ function insertMenuItemInUIList(menuItem)
         a.onclick=ActivateCommentsList;
         a.href="#menu_detail";
         //a.addEventListener("mousedown", );
+=======
+    a.setAttribute('data-menuitemsdata-name', menuItem.name);
+    a.setAttribute('data-menuitemsdata-id', menuItem.id);
+    if (typeof menuItem.avg_rating != "undefined") { 
+        a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + 2 +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";
+        $('.rateit').rateit();
+        //a.innerHTML += "<p>Rating: "+ menuItem.avg_rating + "</p>";   
+        
+        //a.innerHTML += "<br />";
+        a.innerHTML = getPictureHTML(menuItem) + a.innerHTML;
+        
+        a.addEventListener("mousedown", function(e) { 
+            var targ;
+            if (e.target) {
+                targ=e.target;
+            }
+            else if (e.srcElement) {
+                targ=e.srcElement;
+            }
+            var menuItemName = targ.getAttribute('data-menuitemsdata-name');
+            var menuItemId = targ.getAttribute('data-menuitemsdata-id');
+            
+            populateMenuComments(menuItemId, menuItemName);
+            activate_subpage("#menu_detail");
+        });
+>>>>>>> 82e617b2fe227727cdeb3cc93f697e1a161ac82d
         
     }
     else {

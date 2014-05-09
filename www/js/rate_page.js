@@ -30,7 +30,6 @@ function callSubmitRatingApi(body) {
 function handleRate(evt){
      setSelectedRestaurant();
      getMenu(globalData.restaurantLocuId, getMenuCallback);
-     activate_subpage("#rate_screen"); 
 }
 
 function submitRating()
