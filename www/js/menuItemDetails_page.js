@@ -1,8 +1,6 @@
 function getSelectedMenuItem(evt)
 {
     var targetElement = evt.target;
-    var detailsPage = document.getElementById("menu_detail");
-    var elem = document.createElement("p");
+    var elem = document.getElementById("menu_detail_name");
     elem.innerHTML = targetElement.innerHTML;
-    detailsPage.appendChild(elem);
 }
