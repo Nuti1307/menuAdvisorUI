@@ -99,6 +99,46 @@
         #discover a {
              text-decoration: none;
         }
+        
+        #rate h2 {
+        font-family: 'Lobster', cursive; 
+        font-size: 2em;
+        text-align: center;
+        color: black;
+        text-shadow: -1px 0 #ccc, 0 3px #ccc, 3px 0 #ccc, 0 -1px #ccc;
+        }
+        
+        #rate div {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #rate div.ui-select {
+            width:80%;
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+        
+        #rate div.rateit {
+            margin: 1em 0 1em 10%;
+        }
+        #rate textarea {
+            margin: 0 auto 1em auto;
+            width:80%;
+            border-color:black;
+        }
+        #rate div.ui-input-text {
+            width:80%;
+        }
+        #rate a {
+            margin: 4em auto 2em auto;
+            width:60%;
+            background-color: white;
+            color: black;
+            border-color: black;
+            border-width: 0.2em;
+            padding: 0.3em 0;
+        }
 
     </style>
 
@@ -113,13 +153,13 @@
         <a id="ratebutton" data-role="button" href="#rate" onclick="handleRate()">Rate</a>
     </div>
     <div data-role="page" id="rate">
-        <label>Dish Name</label>
+        <h2 id="rate_restaurentName">Restaurant Name</h2>
         <select id="rate_menuList">
+            <option value="">Select Menu ...</option>
         </select>
-        <input id="picture" type="file" accept="image/*" capture="camera">
         <div class="rateit" id="rateit"></div>
-        <label>Comment</label>
-        <textarea id="comment" placeholder="Awesome Dish!!!!" rows="2" wrap="soft"></textarea>
+        <textarea id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
+        <input id="picture" type="file" accept="image/*" capture="camera">
         <a data-role="button" onclick="submitRating()">Submit</a>
     </div>
     <div data-role="page" id="discover">
