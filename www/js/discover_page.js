@@ -131,6 +131,11 @@ function insertMenuItemInUIList(menuItem)
     var menuListElement = document.getElementById("discoverPageMenuList");
     var a = document.createElement("a");
     var li = document.createElement("li");    
+    
+    if (typeof menuItem.name == "undefined") { 
+        return;
+    }
+    
     a.innerHTML = "<h4 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</h4>";  
     li.id=++i;
 
@@ -143,9 +148,9 @@ function insertMenuItemInUIList(menuItem)
     }
     else {      
         a.onclick=populateRatingMenuItem;
-        a.innerHTML += '<button type="button" onmousedown="activateRateScreen(menuItem)" style="color:red;">Write a review.</button>';
         a.href="#rate_screen";
     } 
+    a.innerHTML += '<button type="button" onmousedown="activateRateScreen(menuItem)" style="color:red;">Write a review.</button>';
     li.appendChild(a);
     menuListElement.appendChild(li);
 }
