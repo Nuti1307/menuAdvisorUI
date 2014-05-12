@@ -161,7 +161,7 @@ function insertMenuItemInUIList(menuItem)
         a.href="#menu_detail";    
     }
     else {      
-        //a.innerHTML += '<img src="http://www.pathologystudent.com/wp-content/uploads/2013/10/question.jpg" onload="resizePicture2Thumbnail()"/>';
+        a.innerHTML += '<img src="http://crosspointcc.files.wordpress.com/2013/03/question-mark.jpg" onload="resizePicture2Thumbnail()"/>';
         a.onclick=populateRatingMenuItem; 
         a.href="#rate";
     } 
