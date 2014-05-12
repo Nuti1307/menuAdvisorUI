@@ -28,7 +28,7 @@ function getAllDishFromDBSuccessCallback(data) {
         data[i].isLocu = 0;
         insertMenuItemInUIList(data[i]);
     }
-
+   
     if (data.length < 10) {
         // if we do not get atleast numToDisplayInDiscoverPage from DB then display everything that we get from locu
         getMenu(this.callbackData.restaurentLocuId, getMenuFromLocuSuccessCallback);
@@ -80,7 +80,7 @@ function getPictureHTML(menuItem)
       async: false,
       dataType: 'json',
       success: function (data) {
-        if (data[0].picture != "undefined" && data[0].picture.length > 4)
+        if (data.length > 0 && data[0].picture != "undefined" && data[0].picture.length > 4)
         {
             ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '" onload="resizePicture2Thumbnail()"/>';    
         }
