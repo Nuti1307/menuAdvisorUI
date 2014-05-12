@@ -33,7 +33,7 @@ function getAllDishFromDBSuccessCallback(data) {
         // if we do not get atleast numToDisplayInDiscoverPage from DB then display everything that we get from locu
         getMenu(this.callbackData.restaurentLocuId, getMenuFromLocuSuccessCallback);
     }
-    
+    $('.rateit').rateit();
 }
                 
 function getMenuFromLocuSuccessCallback(data) {
@@ -104,7 +104,6 @@ function populateRatingMenuItem(event)
     //var tname=targ.tagName;
     var menuItemName = targ.getAttribute('data-menuitemsdata-name');
     //globalData.menuItem = menuItem;
-    
     var selectBoxOption = document.createElement("option");
     selectBoxOption.value = menuItemName;
     selectBoxOption.text = menuItemName;
@@ -124,7 +123,23 @@ function ActivateCommentsList(e)
     
     var menuItemName = targ.getAttribute('data-menuitemsdata-name');
     var menuItemId = targ.getAttribute('data-menuitemsdata-id');
+    if (targ.tagName == "A")
+    {
+        var menuItem = new Object();
+        menuItem.name = menuItemName;
+        menuItem.id = menuItemId;
+        activateRateScreen(menuItem);
+    }
     populateMenuComments(menuItemId, menuItemName);
+}
+function activateRateScreen(menuItem)
+{
+    var selectBoxOption = document.createElement("option");
+    selectBoxOption.value = menuItem.name;
+    selectBoxOption.text = menuItem.name;
+    document.getElementById("rate_menuList").remove();
+    document.getElementById("rate_menuList").add(selectBoxOption, null);
+    
 }
 function insertMenuItemInUIList(menuItem)
 {
@@ -138,21 +153,23 @@ function insertMenuItemInUIList(menuItem)
     
     a.innerHTML = "<h4 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</h4>";  
     li.id=++i;
-
+    
     if (typeof menuItem.avg_rating != "undefined") { 
-        a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";
-        $('.rateit').rateit();
+        a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";    
         a.innerHTML = getPictureHTML(menuItem) + a.innerHTML;
-        a.onclick=ActivateCommentsList;
+        a.onclick=ActivateCommentsList; 
         a.href="#menu_detail";    
     }
     else {      
-        a.onclick=populateRatingMenuItem;
-        a.href="#rate_screen";
+        //a.innerHTML += '<img src="http://www.pathologystudent.com/wp-content/uploads/2013/10/question.jpg" onload="resizePicture2Thumbnail()"/>';
+        a.onclick=populateRatingMenuItem; 
+        a.href="#rate";
     } 
-    a.innerHTML += '<button type="button" onmousedown="activateRateScreen(menuItem)" style="color:red;">Write a review.</button>';
+    a.innerHTML += "<br/>";
+    a.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem)" style="color:red;">Write a review.</a>'; 
     li.appendChild(a);
-    menuListElement.appendChild(li);
+    
+    menuListElement.appendChild(li); 
 }
 
 /*$('input').keyup(function() {
