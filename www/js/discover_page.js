@@ -71,18 +71,21 @@ function resizePicture2Thumbnail() {
     }
 }
 
-function getPictureHTML(menuItem)
+function getPictureHTML(menuItem, id)
 {
     var url = 'https://nodejs-menuadvisor.rhcloud.com/api/menu?menuid='+menuItem.id;
     var ret = '';
     $.ajax({
       url: url,
-      async: false,
       dataType: 'json',
       success: function (data) {
+        
         if (data.length > 0 && data[0].picture != "undefined" && data[0].picture.length > 4)
         {
+            var menuListElement = document.getElementById(id);            
             ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '" onload="resizePicture2Thumbnail()"/>';    
+            
+            menuListElement.innerHTML += ret;
         }
       }
     });
@@ -156,7 +159,7 @@ function insertMenuItemInUIList(menuItem)
     
     if (typeof menuItem.avg_rating != "undefined") { 
         a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";    
-        a.innerHTML = getPictureHTML(menuItem) + a.innerHTML;
+        getPictureHTML(menuItem, i); //+ a.innerHTML;
         a.onclick=ActivateCommentsList; 
         a.href="#menu_detail";    
     }
@@ -223,6 +226,7 @@ function populateMenuComments(menuid, name)
     
     $.ajax({
       url: url,
+      data: "",
       async: true,
       dataType: 'json',
       success: function (data) {
