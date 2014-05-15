@@ -166,15 +166,27 @@
         <a data-role="button" onclick="submitRating()">Submit</a>
     </div>
     <div data-role="page" id="discover">
-        <input id="FilterMenuItems" type="text" onkeyup="filter(this)"/>
-		<ol id="discoverPageMenuList">    
-		</ol>
+        <div data-role="header">
+            <a data-rel="back">Back</a>
+            <h1>Discover</h1>
+        </div>
+    
+        <div data-role="content">
+            <input id="FilterMenuItems" type="text" onkeyup="filter(this)"/>
+            <ol id="discoverPageMenuList">    
+            </ol>
+        </div>
     </div>
     <div id="menu_detail" data-role="page">
-    <h2 id="menu_detail_name"></h2>
-        <div>    
-            <ol id="commentslist">
-            </ol>
+        <div data-role="header">
+            <a data-rel="back">Back</a>
+            <h1 id="menu_detail_name"></h1>
+        </div>
+        <div data-role="content">
+            <div>    
+                <ol id="commentslist">
+                </ol>
+            </div>
         </div>
     </div> 
     <div data-role="page" id="details">details page to do</div>
