@@ -85,7 +85,7 @@ function getPictureHTML(menuItem, id)
             var menuListElement = document.getElementById(id);            
             ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '" onload="resizePicture2Thumbnail()"/>';    
             
-            menuListElement.innerHTML += ret;
+            menuListElement.innerHTML = ret + menuListElement.innerHTML;
         }
       }
     });
