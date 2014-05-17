@@ -1,32 +1,3 @@
-/*
-function submitRating()
-{
-    var selectElem = document.getElementById("rate_menuList");
-    var dishName = selectElem.options[selectElem.selectedIndex].value;
-    var comment = document.getElementById("comment").value;
-    var rating = $('#rateit').rateit('value');
-    var jsonData = new Object();
-    jsonData.locu_id = globalData.restaurantLocuId;
-    jsonData.restaurant_name = globalData.restaurantName,
-    jsonData.menu_name = dishName;
-    jsonData.rating = rating.toString();
-    jsonData.comment = comment;
-    jsonData.user_id = "1";
-    callSubmitRatingApi(JSON.stringify(jsonData));
-}
-
-function callSubmitRatingApi(body) { 
-    var url = "https://nodejs-menuadvisor.rhcloud.com/api/storerating";
-    $.ajax({
-      type: "POST",
-      contentType: "application/json",
-      url: url,
-      data: body,
-      success: null
-    });
-}
-
-*/
 function handleRate(evt){
      setSelectedRestaurant();
      var restaurentNameElem = document.getElementById("rate_restaurentName");
@@ -51,20 +22,25 @@ function submitRating()
     newData.append("user_id", "1");
     newData.append("comment", comment);
     newData.append("upload_file", picture);
-    callSubmitRatingApi(newData);
+    callSubmitRatingApi(newData, dishName);
 }
 
-function callSubmitRatingApi(body) { 
+function callSubmitRatingApi(body, dishName) { 
     var url = "https://nodejs-menuadvisor.rhcloud.com/api/storerating";
     $.ajax({
       type: "POST",
-      dataType:'json',
       contentType:'multipart/form-data',
       url: url,
       data: body,
       cache: false,
       contentType: false,
       processData: false,
-      success: null
+      callbackData: dishName,
+      success: function() {
+          // Fix Id Issue. There is no menuId. So add rest api which takes menuName and populates the menuDetails Page
+          // Or add a rest api which takes menuName & returns Id. Prefer the first one
+          populateMenuComments(1, this.callbackData);
+          $.mobile.changePage( $("#menu_detail"), { transition: "slideup", changeHash: false });
+      }
     });
 }

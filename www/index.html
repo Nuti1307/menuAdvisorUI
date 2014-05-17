@@ -123,12 +123,43 @@
         }
         
         #rate div.rateit {
-            margin: 1em 0 1em 10%;
+            margin: 1em 0 0em 10%;
         }
+        
+        #rate div.rateit-range
+        {
+            background: url(ratingStarFiles/star-white32.png);
+            height: 32px;
+        }
+ 
+        #rate div.rateit-hover
+        {
+            background: url(ratingStarFiles/star-gold32.png);
+        }
+ 
+        #rate div.rateit-selected
+        {
+            background: url(ratingStarFiles/star-red32.png);
+        }
+ 
+        #rate div.rateit-reset
+        {
+            background: url(ratingStarFiles/star-black32.png);
+            width: 32px;
+            height: 32px;
+        }
+ 
+        #rate div.rateit-reset:hover
+        {
+            background: url(star-white32.png);
+        }
+        
         #rate textarea {
             margin: 0 auto 1em auto;
             width:80%;
             border-color:black;
+            resize:none;
+            max-height: 4em;
         }
         #rate div.ui-input-text {
             width:80%;
@@ -160,9 +191,9 @@
         <select id="rate_menuList">
             <option value="">Select Menu ...</option>
         </select>
-        <div class="rateit" id="rateit"></div>
-        <textarea id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
+        <div class="rateit" id="rateit" data-rateit-resetable="false" data-rateit-starwidth="32" data-rateit-starheight="32"></div>
         <input id="picture" type="file" accept="image/*" capture="camera">
+        <textarea id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
         <a data-role="button" onclick="submitRating()">Submit</a>
     </div>
     <div data-role="page" id="discover">
