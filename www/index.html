@@ -149,7 +149,7 @@
 <body onload="load()">
     <div data-role="page" id="main">
         <h1>Menu Advisor</h1>
-        <input type="text" name="restaurantname" id="restaurantname" list="restaurantnamelist"/>
+        <input type="text" name="restaurantname" id="restaurantname" list="restaurantnamelist" onClick="Clear(this);"/>
         <datalist id="restaurantnamelist"> 
         </datalist>
         <a id="discoverbutton" data-role="button" href="#discover" onclick="handleDiscover()">Discover</a>

@@ -86,8 +86,12 @@ function setSelectedRestaurant()
 
 function setDefaultRestaurantBasedOnCurrentLocation()
 {
-    globalData.restaurantLocuId = restaurantList[i].locuId;
-    globalData.restaurantName = restaurantList[i].name;
+    globalData.restaurantLocuId = restaurantList[0].locuId;
+    globalData.restaurantName = restaurantList[0].name;
     var restaurantElem = document.getElementById("restaurantname");
     restaurantElem.value = globalData.restaurantName;
+}
+function Clear(target)
+{
+    target.value = "";
 }
