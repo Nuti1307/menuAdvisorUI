@@ -73,6 +73,15 @@
             padding: 0.3em;
         }
         
+        #discover a#header {
+            margin: 8px 0 0 8px;
+        }
+        #discover div.ui-input-text {
+            display: inline-block;
+            width:70%;
+            margin: 8px auto 0 10px;
+        }
+        
         #discover li {
             border-bottom: 0.2em solid;
             border-color: #ccc;
@@ -92,7 +101,7 @@
             padding: 0;
         }
         
-        #discover img {
+        #discover ol img {
 			float: left;
             margin: 0 15px 0 0;
 		}
@@ -197,16 +206,10 @@
         <a data-role="button" onclick="submitRating()">Submit</a>
     </div>
     <div data-role="page" id="discover">
-        <div data-role="header">
-            <a data-rel="back">Back</a>
-            <h1>Discover</h1>
-        </div>
-    
-        <div data-role="content">
-            <input id="FilterMenuItems" type="text" onkeyup="filter(this)"/>
-            <ol id="discoverPageMenuList">    
-            </ol>
-        </div>
+        <a id="header" href="#main"><img src="images/logo1.jpg"></a>
+        <input id="FilterMenuItems" type="text" onkeyup="filter(this)" placeholder="Search" results="0"/>
+        <ol id="discoverPageMenuList">    
+        </ol>
     </div>
     <div id="menu_detail" data-role="page">
         <div data-role="header">
