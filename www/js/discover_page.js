@@ -6,6 +6,8 @@
 //$("#discoverbutton").click(function(evt)
 function handleDiscover(evt){
      setSelectedRestaurant();
+     var elem = document.getElementById("restaurentName");
+     elem.innerHTML = globalData.restaurantName;
      getAllDishFromDB(globalData.restaurantLocuId);
     // $('#discover').click();//("#menu_listing"); 
 }//);
@@ -161,14 +163,14 @@ function insertMenuItemInUIList(menuItem)
         a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";    
         getPictureHTML(menuItem, i); //+ a.innerHTML;
         a.onclick=ActivateCommentsList; 
-        a.href="#menu_detail";    
+        a.href="#menu_detail";   
+        a.innerHTML += "<br/>";
     }
     else {      
-        a.innerHTML += '<img src="http://crosspointcc.files.wordpress.com/2013/03/question-mark.jpg" onload="resizePicture2Thumbnail()"/>';
+        a.innerHTML = '<img src="images/question-mark.jpg" onload="resizePicture2Thumbnail()"/>' + a.innerHTML;
         a.onclick=populateRatingMenuItem; 
         a.href="#rate";
     } 
-    a.innerHTML += "<br/>";
     a.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem)" style="color:red;">Write a review.</a>'; 
     li.appendChild(a);
     
