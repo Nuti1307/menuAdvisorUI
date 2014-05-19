@@ -17,13 +17,12 @@ function handleDiscover(evt){
          menuListElement.innerHTML = "";
          globalData.currentRestaurantName = globalData.restaurantName;
      }
-    
-     globalData.currentRestaurantName = globalData.restaurantName;
      
+     var restaurentNameElem = document.getElementById("rate_restaurentName");
+     restaurentNameElem.innerHTML = globalData.restaurantName;
      elem.innerHTML = globalData.restaurantName;
-     getAllDishFromDB(globalData.restaurantLocuId);
-    // $('#discover').click();//("#menu_listing"); 
-}//);
+     getAllDishFromDB(globalData.restaurantLocuId);   
+}
 function getAllDishFromDB(restaurentLocuId) {
     var url = "https://nodejs-menuadvisor.rhcloud.com/api/menulist?restaurantid=";
     url += 'xyz'; // TODO: Remove later
@@ -138,7 +137,6 @@ function ActivateCommentsList(e)
     else if (e.srcElement) {
         targ=e.srcElement;
     }
-    
     var menuItemName = targ.getAttribute('data-menuitemsdata-name');
     var menuItemId = targ.getAttribute('data-menuitemsdata-id');
     if (targ.tagName == "A")
@@ -147,6 +145,7 @@ function ActivateCommentsList(e)
         menuItem.name = menuItemName;
         menuItem.id = menuItemId;
         activateRateScreen(menuItem);
+        return;
     }
     populateMenuComments(menuItemId, menuItemName);
 }
@@ -157,7 +156,6 @@ function activateRateScreen(menuItem)
     selectBoxOption.text = menuItem.name;
     document.getElementById("rate_menuList").remove();
     document.getElementById("rate_menuList").add(selectBoxOption, null);
-    
 }
 function insertMenuItemInUIList(menuItem)
 {
@@ -181,10 +179,9 @@ function insertMenuItemInUIList(menuItem)
     }
     else {      
         a.innerHTML = '<img src="images/question-mark.jpg" onload="resizePicture2Thumbnail()"/>' + a.innerHTML;
-        a.onclick=populateRatingMenuItem; 
-        a.href="#rate";
+        a.onclick=populateRatingMenuItem;
     } 
-    a.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem)" style="color:red;">Write a review.</a>'; 
+    a.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem);" style="color:red;">Write a review.</a>'; 
     li.appendChild(a);
     
     menuListElement.appendChild(li); 
