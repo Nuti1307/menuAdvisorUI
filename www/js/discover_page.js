@@ -7,6 +7,19 @@
 function handleDiscover(evt){
      setSelectedRestaurant();
      var elem = document.getElementById("restaurentName");
+     
+     // Do not re-populate if it's the same restaurant. Otherwise reset everything.
+     if (globalData.currentRestaurantName == globalData.restaurantName)
+         return;
+     else
+     {
+         var menuListElement = document.getElementById("discoverPageMenuList");
+         menuListElement.innerHTML = "";
+         globalData.currentRestaurantName = globalData.restaurantName;
+     }
+    
+     globalData.currentRestaurantName = globalData.restaurantName;
+     
      elem.innerHTML = globalData.restaurantName;
      getAllDishFromDB(globalData.restaurantLocuId);
     // $('#discover').click();//("#menu_listing"); 
@@ -154,7 +167,7 @@ function insertMenuItemInUIList(menuItem)
     
     if (typeof menuItem.name == "undefined") { 
         return;
-    }
+    } 
     
     a.innerHTML = "<h4 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</h4>";  
     li.id=++i;
