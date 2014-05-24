@@ -100,6 +100,7 @@ function getPictureHTML(menuItem, id)
             ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '" onload="resizePicture2Thumbnail()"/>';    
             
             menuListElement.innerHTML = ret + menuListElement.innerHTML;
+            menuListElement.onclick=ActivateCommentsList; 
         }
       }
     });
@@ -173,7 +174,6 @@ function insertMenuItemInUIList(menuItem)
     if (typeof menuItem.avg_rating != "undefined") { 
         a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";    
         getPictureHTML(menuItem, i); //+ a.innerHTML;
-        a.onclick=ActivateCommentsList; 
         a.href="#menu_detail";   
         a.innerHTML += "<br/>";
     }
