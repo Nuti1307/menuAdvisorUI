@@ -31,11 +31,18 @@ function getRestaurant(location)
 function getRestaurantSuccessCallback(data)
 {
     var restaurantList = getRestaurantList(data);
-    var restaurantNameListElem = document.getElementById("restaurantnamelist");
+    var restaurantNameListElem = [];
     for(var i = 0; i < restaurantList.length; i++)
     {
-        restaurantNameListElem.appendChild(createRestaurantOptionUIElement(restaurantList[i].name));
+        restaurantNameListElem.push({
+            label: restaurantList[i].name,
+            value: restaurantList[i].name
+        });
     }
+    $( "#restaurantname" ).autocomplete(
+	{
+		 source:restaurantNameListElem
+	});
     // set the default restaurant name in search box
     setDefaultRestaurantBasedOnCurrentLocation();
 }
@@ -76,7 +83,6 @@ function createRestaurantOptionUIElement(restaurantName) {
 function setSelectedRestaurant()
 {
     var restaurantElem = document.getElementById("restaurantname");
-    var restaurantDataListElem = document.getElementById("restaurantnamelist");
     globalData.restaurantName = restaurantElem.value;
     for(var i = 0; i < restaurantList.length; i++)
     {

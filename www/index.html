@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -197,9 +200,7 @@
 <body onload="load()">
     <div data-role="page" id="main">
         <h1>Menu Advisor</h1>
-        <input type="text" name="restaurantname" id="restaurantname" list="restaurantnamelist" onClick="Clear(this);"/>
-        <datalist id="restaurantnamelist"> 
-        </datalist>
+        <input type="text" id="restaurantname" onClick="Clear(this);"/>
         <a id="discoverbutton" data-role="button" href="#discover" onclick="handleDiscover()">Discover</a>
         <a id="ratebutton" data-role="button" href="#rate" onclick="handleRate()">Rate</a>
     </div>
