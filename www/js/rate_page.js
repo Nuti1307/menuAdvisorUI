@@ -22,7 +22,7 @@ function submitRating()
     newData.append("user_id", "1");
     newData.append("comment", comment);
     newData.append("upload_file", picture);
-    callSubmitRatingApi(newData, dishName);
+    callSubmitRatingApi(newData);
 }
 
 function callSubmitRatingApi(body, dishName) { 
@@ -35,12 +35,9 @@ function callSubmitRatingApi(body, dishName) {
       cache: false,
       contentType: false,
       processData: false,
-      callbackData: dishName,
       success: function() {
-          // Fix Id Issue. There is no menuId. So add rest api which takes menuName and populates the menuDetails Page
-          // Or add a rest api which takes menuName & returns Id. Prefer the first one
-          populateMenuComments(1, this.callbackData);
-          $.mobile.changePage( $("#menu_detail"), { transition: "slideup", changeHash: false });
+          handleDiscover();
+          $.mobile.changePage( $("#discover"), { transition: "slideup", changeHash: false });
       }
     });
 }
