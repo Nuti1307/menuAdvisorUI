@@ -4,6 +4,8 @@
 //  "name" :
 // }
 //$("#discoverbutton").click(function(evt)
+
+var globalMenuArray = [];
 function handleDiscover(evt){
      setSelectedRestaurant();
      var elem = document.getElementById("restaurentName");
@@ -16,6 +18,7 @@ function handleDiscover(evt){
          var menuListElement = document.getElementById("discoverPageMenuList");
          menuListElement.innerHTML = "";
          globalData.currentRestaurantName = globalData.restaurantName;
+         globalMenuArray = [];
      }
      
      var restaurentNameElem = document.getElementById("rate_restaurentName");
@@ -158,17 +161,17 @@ function activateRateScreen(menuItem)
     document.getElementById("rate_menuList").remove();
     document.getElementById("rate_menuList").add(selectBoxOption, null);
 }
-var menuArray = [];
+
 function isDuplicateMenu(menuItem)
 {
-    for (var i = 0; i < menuArray.length; i++)
+    for (var i = 0; i < globalMenuArray.length; i++)
     {
-        if (menuArray[i] == menuItem.name)
+        if (globalMenuArray[i] == menuItem.name)
         {
             return true;    
         }
     }
-    menuArray.push(menuItem.name);
+    globalMenuArray.push(menuItem.name);
     return false;
 }
 function insertMenuItemInUIList(menuItem)
