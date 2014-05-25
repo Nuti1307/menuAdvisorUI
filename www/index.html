@@ -76,6 +76,28 @@
             padding: 0.3em;
         }
         
+        #menu_detail ol {
+            padding:0;
+        }
+        
+        #menu_detail li {
+            border-bottom: 0.2em solid;
+            border-color: #ccc;
+            overflow: auto;
+            padding: 10px;
+            background-color: #ffffff;
+        }
+        #menu_detail div {
+            display:block;
+        }
+        
+        #menu_detail img {
+            max-height: 50%;
+            max-width: 90%;
+            height:auto;
+            width:auto;
+        }
+        
         #discover a#header {
             margin: 8px 0 0 8px;
         }
@@ -225,15 +247,21 @@
     <div id="menu_detail" data-role="page">
         <div data-role="header">
             <a data-rel="back">Back</a>
-            <h1 id="menu_detail_name"></h1>
+            <h2 id="menu_detail_name"></h2>
         </div>
-        <div data-role="content">
-            <div>    
-                <ol id="commentslist">
-                </ol>
-            </div>
-        </div>
+        <ol id="commentslist">
+            <!-- TODO remove it -->
+            <li>
+                <img src="images/waffles.jpg"/>
+                <div class="rateit" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                <p> great awesome food. must try!!!</p>
+            </li>
+            <li>
+                <img src="images/waffles.jpg"/>
+                <div class="rateit" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                <p> great awesome food. must try!!!</p>
+            </li>
+        </ol>
     </div> 
-    <div data-role="page" id="details">details page to do</div>
 </body>
 </html>

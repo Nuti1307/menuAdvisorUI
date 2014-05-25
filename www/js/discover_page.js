@@ -212,10 +212,11 @@ function displayMenuComment(data) {
     for (var i = 0; i < data.length; i++)
     {
         var a = document.createElement("a");
-        var li = document.createElement("li");    
-
-        a.innerHTML += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[i].picture + '" onload="resizePicture2Thumbnail()"/>';       
-        a.innerHTML += "<p style='font-size:15px'>"+data[i].rating+"</p>";
+        var li = document.createElement("li");
+        if(data[i].picture) {
+            a.innerHTML += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[i].picture + '" />';
+        }
+        a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + data[i].rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>"
         a.innerHTML += "<p style='font-size:12px'>"+data[i].comments+"</p>";
         
         li.addEventListener("mousedown", function(e) { 
@@ -225,13 +226,11 @@ function displayMenuComment(data) {
         li.appendChild(a);
         menuListElement.appendChild(li);        
     }
-    
+    $('.rateit').rateit();
 }
 function populateMenuComments(menuid, name)
 {
     var url = 'https://nodejs-menuadvisor.rhcloud.com/api/menu?menuid='+menuid;
-    //var menuName = document.getElementById("menu_detail_name");    
-    //menuName.innerHTML = "<p>"+name+"</p>";
     
     var menutitle = document.getElementById("menu_detail_name");
     menutitle.innerHTML = name;
