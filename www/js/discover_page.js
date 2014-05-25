@@ -158,8 +158,24 @@ function activateRateScreen(menuItem)
     document.getElementById("rate_menuList").remove();
     document.getElementById("rate_menuList").add(selectBoxOption, null);
 }
+var menuArray = [];
+function isDuplicateMenu(menuItem)
+{
+    for (var i = 0; i < menuArray.length; i++)
+    {
+        if (menuArray[i] == menuItem.name)
+        {
+            return true;    
+        }
+    }
+    menuArray.push(menuItem.name);
+    return false;
+}
 function insertMenuItemInUIList(menuItem)
 {
+    if (isDuplicateMenu(menuItem))
+        return;
+
     var menuListElement = document.getElementById("discoverPageMenuList");
     var a = document.createElement("a");
     var li = document.createElement("li");    
@@ -195,9 +211,8 @@ function insertMenuItemInUIList(menuItem)
 function filter(element) {
     var value = $(element).val();
     $("#discoverPageMenuList > li").each(function () {
-        var menuname = $(this).text();
-        
-        if (menuname.indexOf(value) > -1) {
+        var menuname = $(this).text();        
+        if (menuname.toLowerCase().indexOf(value) > -1) {
             $(this).show();
             
         } else {
