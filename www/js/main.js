@@ -18,8 +18,10 @@ function getRestaurant(location)
     url += "%2C%20";
     url += location.coords.longitude;
     url += "&category=restaurant";
-    url += "&radius=" + "50000"; // 50km = approx 30 miles
+    url += "&radius=" + "8046"; // approx 5 miles
     url += "&api_key="+ apiKey;
+    
+    setDefaultRestaurantBasedOnCurrentLocation(location.coords.latitude, location.coords.longitude);
 
     $.ajax({
       dataType: "jsonp",
@@ -28,10 +30,19 @@ function getRestaurant(location)
     });
 }
 
+function compare(a,b) 
+{
+  if (a.name < b.name)
+     return -1;
+  if (a.name > b.name)
+    return 1;
+  return 0;
+}
 function getRestaurantSuccessCallback(data)
 {
     var restaurantList = getRestaurantList(data);
     var restaurantNameListElem = [];
+    restaurantList.sort(compare);
     for(var i = 0; i < restaurantList.length; i++)
     {
         restaurantNameListElem.push({
@@ -44,7 +55,6 @@ function getRestaurantSuccessCallback(data)
 		 source:restaurantNameListElem
 	});
     // set the default restaurant name in search box
-    setDefaultRestaurantBasedOnCurrentLocation();
 }
 
 
@@ -78,8 +88,6 @@ function createRestaurantOptionUIElement(restaurantName) {
     htmlOptionElem.setAttribute("value", restaurantName);
     return htmlOptionElem;
 }
-
-
 function setSelectedRestaurant()
 {
     var restaurantElem = document.getElementById("restaurantname");
@@ -90,13 +98,34 @@ function setSelectedRestaurant()
             globalData.restaurantLocuId = restaurantList[i].locuId;
     }
 }
-
-function setDefaultRestaurantBasedOnCurrentLocation()
+function setDefaultRestaurantCallback(data)
 {
-    globalData.restaurantLocuId = restaurantList[0].locuId;
-    globalData.restaurantName = restaurantList[0].name;
+    var restaurantList = getRestaurantList(data);
     var restaurantElem = document.getElementById("restaurantname");
-    restaurantElem.value = globalData.restaurantName;
+    if (restaurantList.length == 0)
+    {
+        restaurantElem.value = "Enter restaurant name";
+    }
+    else
+    {
+        restaurantElem.value = restaurantList[0].name;
+    }
+}
+
+function setDefaultRestaurantBasedOnCurrentLocation(lat, longitude)
+{
+    var url = "https://api.locu.com/v1_0/venue/search/?location=";
+    url += lat;
+    url += "%2C%20";
+    url += longitude;
+    url += "&category=restaurant";
+    url += "&radius=" + "50"; // search within 50 meters
+    url += "&api_key="+ apiKey;
+    $.ajax({
+      dataType: "jsonp",
+      url: url,
+      success: setDefaultRestaurantCallback
+    });
 }
 function Clear(target)
 {
