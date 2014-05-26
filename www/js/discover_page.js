@@ -176,7 +176,7 @@ function insertMenuItemInUIList(menuItem)
         a.innerHTML = '<img src="images/question-mark.jpg"/>' + a.innerHTML;
         a.onclick=populateRatingMenuItem;
     } 
-    a.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem);" style="color:red;">Write a review.</a>'; 
+    a.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem);">Write a review.</a>'; 
     li.appendChild(a);
     
     menuListElement.appendChild(li); 
