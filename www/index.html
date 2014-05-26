@@ -220,6 +220,24 @@
             border-width: 0.2em;
             padding: 0.3em 0;
         }
+        
+        div.ui-header.ui-bar-inherit {
+            background-color: white;
+            align-items: center;
+            
+        }
+        
+        div.ui-header a#back {
+            background-image: url(images/backArrow.jpg);
+            background-color: white;
+            border: none;
+            background-repeat: no-repeat;
+            background-position: center center;
+            width:auto;
+            height: 5px;
+            box-shadow: none;
+            top:0.5em;
+        }
 
     </style>
 
@@ -233,7 +251,7 @@
     </div>
     <div data-role="page" id="rate">
         <div data-role="header">
-            <a data-rel="back">Back</a>
+            <a id="back" data-rel="back"></a>
             <h2 id="rate_restaurentName">Restaurant Name</h2>
         </div>
         <select id="rate_menuList">
@@ -247,16 +265,16 @@
     </div>
     <div data-role="page" id="discover">
         <div data-role="header">
-            <a data-rel="back">Back</a>
+            <a id="back" data-rel="back"></a>
             <h2 id="restaurentName"></h2>
         </div>
-        <input id="FilterMenuItems" type="text" onkeyup="filter(this)" placeholder="Search" results="0"/>
+        <input id="FilterMenuItems" type="search" name="search-mini" onkeyup="filter(this)" data-mini="true" placeholder="Search" results="0"/> 
         <ol id="discoverPageMenuList">    
         </ol>
     </div>
     <div id="menu_detail" data-role="page">
         <div data-role="header">
-            <a data-rel="back">Back</a>
+            <a id="back" data-rel="back"></a>
             <h2 id="menu_detail_name"></h2>
         </div>
         <ol id="commentslist">
