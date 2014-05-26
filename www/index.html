@@ -95,10 +95,11 @@
             height:auto;
             width:auto;
         }
-        
+/*      
         #discover a#header {
             margin: 8px 0 0 8px;
         }
+*/
         #discover div.ui-input-text {
             display: inline-block;
             width:70%;
@@ -142,7 +143,7 @@
         #discover a {
              text-decoration: none;
         }
-        
+/*        
         #rate h2 {
         font-family: 'Lobster', cursive; 
         font-size: 2em;
@@ -150,7 +151,7 @@
         color: black;
         text-shadow: -1px 0 #ccc, 0 3px #ccc, 3px 0 #ccc, 0 -1px #ccc;
         }
-        
+*/        
         #rate div {
             margin-left: auto;
             margin-right: auto;
@@ -204,7 +205,7 @@
         #rate div.ui-input-text {
             width:80%;
         }
-        #rate a {
+        #rate a.submit {
             margin: 4em auto 2em auto;
             width:60%;
             background-color: white;
@@ -225,8 +226,10 @@
         <a id="ratebutton" data-role="button" href="#rate" onclick="handleRate()">Rate</a>
     </div>
     <div data-role="page" id="rate">
-        <a data-rel="back"><img src="images/back.jpg"></a>
-        <h2 id="rate_restaurentName">Restaurant Name</h2>
+        <div data-role="header">
+            <a data-rel="back">Back</a>
+            <h2 id="rate_restaurentName">Restaurant Name</h2>
+        </div>
         <select id="rate_menuList">
             <option value="">Select Menu ...</option>
         </select>
@@ -234,12 +237,14 @@
         <input id="picture" type="file" accept="image/*" capture="camera">
         <br/>
         <textarea id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
-        <a data-role="button" onclick="submitRating()">Submit</a>
+        <a class="submit" data-role="button" onclick="submitRating()">Submit</a>
     </div>
     <div data-role="page" id="discover">
-        <a id="header" href="#main"><img src="images/back.jpg"></a>
+        <div data-role="header">
+            <a data-rel="back">Back</a>
+            <h2 id="restaurentName"></h2>
+        </div>
         <input id="FilterMenuItems" type="text" onkeyup="filter(this)" placeholder="Search" results="0"/>
-        <h2 id="restaurentName"></h2>
         <ol id="discoverPageMenuList">    
         </ol>
     </div>
