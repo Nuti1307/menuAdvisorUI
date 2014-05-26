@@ -26,9 +26,13 @@
     <script type="text/javascript">
 		/* This code is used to run as soon as Intel activates */
 		    //hide splash screen
-        populateAutoCompleteItems();
-        intel.xdk.device.hideSplashScreen();            
-		
+        var onDeviceReady=function(){
+            //hide splash screen
+             populateAutoCompleteItems();
+             intel.xdk.device.hideSplashScreen();            
+ 		};
+        document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+		onDeviceReady();
 	</script>
     <script src="js/locu.js"></script>
     <script src="js/app.js"></script>
