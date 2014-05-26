@@ -168,9 +168,9 @@ function insertMenuItemInUIList(menuItem)
     
     if (typeof menuItem.avg_rating != "undefined") { 
         a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";    
-        getPictureHTML(menuItem, i); //+ a.innerHTML;
+        getPictureHTML(menuItem, i);
         a.href="#menu_detail";   
-        a.innerHTML += "<br/>";
+        //a.innerHTML += "<br/>";
     }
     else {      
         a.innerHTML = '<img src="images/question-mark.jpg"/>' + a.innerHTML;
