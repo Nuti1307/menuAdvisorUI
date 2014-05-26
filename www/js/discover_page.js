@@ -4,7 +4,6 @@
 //  "name" :
 // }
 //$("#discoverbutton").click(function(evt)
-
 var globalMenuArray = [];
 function handleDiscover(evt){
      setSelectedRestaurant();
@@ -63,30 +62,6 @@ function getMenuFromLocuSuccessCallback(data) {
         insertMenuItemInUIList(menuItem);
     }
 }
-function resizePicture2Thumbnail() {
-    maxheight=100;
-    maxwidth= 100;
-    imgs=document.getElementsByTagName("img");
-    for (p=0; p<imgs.length; p++) {
-
-        w=parseInt(imgs[p].width);
-        h=parseInt(imgs[p].height);
-        if (parseInt(imgs[p].width)>maxwidth) {
-            imgs[p].style.cursor="pointer";
-            //imgs[p].onclick=new Function("iw=window.open(this.src,'ImageViewer','resizable=1');iw.focus()");
-            imgs[p].height=(maxwidth/imgs[p].width)*imgs[p].height;
-            imgs[p].width=maxwidth;
-        }
-        if (parseInt(imgs[p].height)>maxheight) {
-            imgs[p].style.cursor="pointer";
-            //imgs[p].onclick=new
-            //Function("iw=window.open(this.src,'ImageViewer','resizable=1');iw.focus()");
-            imgs[p].width=(maxheight/imgs[p].height)*imgs[p].width;
-            imgs[p].height=maxheight;
-        }
-
-    }
-}
 
 function getPictureHTML(menuItem, id)
 {
@@ -100,7 +75,7 @@ function getPictureHTML(menuItem, id)
         if (data.length > 0 && data[0].picture != "undefined" && data[0].picture.length > 4)
         {
             var menuListElement = document.getElementById(id);            
-            ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '" onload="resizePicture2Thumbnail()"/>';    
+            ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '"/>';   
             
             menuListElement.innerHTML = ret + menuListElement.innerHTML;
             menuListElement.onclick=ActivateCommentsList; 
@@ -174,6 +149,7 @@ function isDuplicateMenu(menuItem)
     globalMenuArray.push(menuItem.name);
     return false;
 }
+
 function insertMenuItemInUIList(menuItem)
 {
     if (isDuplicateMenu(menuItem))
@@ -197,7 +173,7 @@ function insertMenuItemInUIList(menuItem)
         a.innerHTML += "<br/>";
     }
     else {      
-        a.innerHTML = '<img src="images/question-mark.jpg" onload="resizePicture2Thumbnail()"/>' + a.innerHTML;
+        a.innerHTML = '<img src="images/question-mark.jpg"/>' + a.innerHTML;
         a.onclick=populateRatingMenuItem;
     } 
     a.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem);" style="color:red;">Write a review.</a>'; 
@@ -216,6 +192,7 @@ function filter(element) {
     $("#discoverPageMenuList > li").each(function () {
         var menuname = $(this).text();        
         if (menuname.toLowerCase().indexOf(value) > -1) {
+
             $(this).show();
             
         } else {
