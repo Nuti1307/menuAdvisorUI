@@ -8,9 +8,21 @@ var restaurantList = new Array();
 
 function populateAutoCompleteItems()
 {
-    navigator.geolocation.getCurrentPosition(getRestaurant);
+    navigator.geolocation.getCurrentPosition(getRestaurant, handleLocationError);
 }
-
+function handleLocationError(error)
+{
+    switch(error.code) 
+    {
+    case error.PERMISSION_DENIED:      
+    case error.POSITION_UNAVAILABLE:
+    case error.TIMEOUT:
+    case error.UNKNOWN_ERROR:
+    var restaurantElem = document.getElementById("restaurantname");
+    restaurantElem.value = "Location services unavailable";
+    }
+    
+}
 function getRestaurant(location)
 {
     var url = "https://api.locu.com/v1_0/venue/search/?location=";
