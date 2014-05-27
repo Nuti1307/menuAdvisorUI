@@ -164,7 +164,7 @@ function insertMenuItemInUIList(menuItem)
     } 
     
     a.innerHTML = "<h4 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</h4>";  
-    li.id=++i;
+    a.id=++i;
     
     if (typeof menuItem.avg_rating != "undefined") { 
         a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";    
@@ -176,8 +176,15 @@ function insertMenuItemInUIList(menuItem)
         a.innerHTML = '<img src="images/question-mark.jpg"/>' + a.innerHTML;
         a.onclick=populateRatingMenuItem;
     } 
-    a.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem);">Write a review.</a>'; 
-    li.appendChild(a);
+    var innerDiv = document.createElement("div");
+    innerDiv.classList.add("innerDiv");
+    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem);">Write a review.</a>';
+    
+    var outerDiv = document.createElement("div");
+    outerDiv.classList.add("outerDiv");
+    outerDiv.appendChild(a);
+    outerDiv.appendChild(innerDiv);
+    li.appendChild(outerDiv);
     
     menuListElement.appendChild(li); 
 }

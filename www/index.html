@@ -157,11 +157,28 @@
             /*text-overflow: ellipsis;*/
             color: black;
             margin-bottom: 1px;
+            margin-top:1px;
         }
         #discover a {
             text-decoration: none;
             display:block;
             color: #ccc;
+        }
+        #discover a#review_button {
+            position: 
+            top:auto;
+            bottom:1em;
+        }
+        
+        #discover li div.outerDiv {
+            position:relative;
+            height:100px;
+        }
+        
+        #discover li div.innerDiv {
+            position: absolute;
+            left: 120px; 
+            bottom: 10px;
         }
 /*        
         #rate h2 {
@@ -286,20 +303,29 @@
         <ol id="discoverPageMenuList">
             <!-- TODO remove it -->
             <li>
+                <div class="outerDiv">
                 <a>
                     <img src="https://nodejs-menuadvisor.rhcloud.com/uploads/216850-15hxpkk.jpg"/>
                     <h4 data-menuitemsdata-name="bhindi" data-menuitemsdata-id="11">bhindi</h4>
                     <div class="rateit" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                    <a id="review_button" data-menuitemsdata-name="bhindi" data-menuitemsdata-id="11" href="#rate">Write a review.</a>
                 </a>
+                
+                <div class="innerDiv">
+                <a id="review_button" data-menuitemsdata-name="bhindi" data-menuitemsdata-id="11" href="#rate">Write a review.</a>
+                </div>
+                </div>
             </li>
             <li>
+                <div class="outerDiv">
                 <a>
-                <img src="images/question-mark.jpg"/>
-                <h4 data-menuitemsdata-name="samosa" data-menuitemsdata-id="21">samosa</h4>
-                <div class="rateit" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                <a id="review_button" data-menuitemsdata-name="samosa" data-menuitemsdata-id="21" href="#rate">Write a review.</a>
+                    <img src="images/question-mark.jpg"/>
+                    <h4 data-menuitemsdata-name="samosa" data-menuitemsdata-id="21">samosa</h4>
+                    <div class="rateit" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                 </a>
+                <div class="innerDiv">
+                <a id="review_button" data-menuitemsdata-name="samosa" data-menuitemsdata-id="21" href="#rate">Write a review.</a>
+                </div>
+                </div>
             </li>
         </ol>
     </div>
