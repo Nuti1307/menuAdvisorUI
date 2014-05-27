@@ -153,10 +153,10 @@
             width:auto;
 		}
         #discover h4 {
-            font-family: Palatino Linotype, serif;
-            overflow: hidden;/*
-            text-overflow: ellipsis;*/
+            overflow: hidden;
+            /*text-overflow: ellipsis;*/
             color: black;
+            margin-bottom: 1px;
         }
         #discover a {
             text-decoration: none;
@@ -283,7 +283,24 @@
             <h2 id="restaurentName"></h2>
         </div>
         <input id="FilterMenuItems" type="search" name="search-mini" onkeyup="filter(this)" data-mini="true" placeholder="Search" results="0"/> 
-        <ol id="discoverPageMenuList">    
+        <ol id="discoverPageMenuList">
+            <!-- TODO remove it -->
+            <li>
+                <a>
+                    <img src="https://nodejs-menuadvisor.rhcloud.com/uploads/216850-15hxpkk.jpg"/>
+                    <h4 data-menuitemsdata-name="bhindi" data-menuitemsdata-id="11">bhindi</h4>
+                    <div class="rateit" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                    <a id="review_button" data-menuitemsdata-name="bhindi" data-menuitemsdata-id="11" href="#rate">Write a review.</a>
+                </a>
+            </li>
+            <li>
+                <a>
+                <img src="images/question-mark.jpg"/>
+                <h4 data-menuitemsdata-name="samosa" data-menuitemsdata-id="21">samosa</h4>
+                <div class="rateit" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                <a id="review_button" data-menuitemsdata-name="samosa" data-menuitemsdata-id="21" href="#rate">Write a review.</a>
+                </a>
+            </li>
         </ol>
     </div>
     <div id="menu_detail" data-role="page">
