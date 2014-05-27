@@ -20,8 +20,6 @@ function handleDiscover(evt){
          globalMenuArray = [];
      }
      
-     var restaurentNameElem = document.getElementById("rate_restaurentName");
-     restaurentNameElem.innerHTML = globalData.restaurantName;
      elem.innerHTML = globalData.restaurantName;
      getAllDishFromDB(globalData.restaurantLocuId);   
 }
@@ -128,13 +126,21 @@ function ActivateCommentsList(e)
     }
     populateMenuComments(menuItemId, menuItemName);
 }
-function activateRateScreen(menuItem)
+function activateRateScreen(menuName)
 {
-    var selectBoxOption = document.createElement("option");
-    selectBoxOption.value = menuItem.name;
-    selectBoxOption.text = menuItem.name;
-    document.getElementById("rate_menuList").remove();
-    document.getElementById("rate_menuList").add(selectBoxOption, null);
+    var restaurentNameElem = document.getElementById("rate_restaurentName");
+    if(restaurentNameElem.innerHTML !== globalData.restaurantName) 
+    {
+        restaurentNameElem.innerHTML = globalData.restaurantName;
+        for(var i = 0 ; i < globalMenuArray.length ; i++) {
+            var selectBoxOption = document.createElement("option");
+            selectBoxOption.value = globalMenuArray[i];
+            selectBoxOption.text = globalMenuArray[i];
+            selectBoxOption.id = globalMenuArray[i];
+            document.getElementById("rate_menuList").add(selectBoxOption, null);
+        }
+    }
+    document.getElementById("rate_menuList").selectedIndex = document.getElementById(menuName).index;
 }
 
 function isDuplicateMenu(menuItem)
@@ -178,7 +184,7 @@ function insertMenuItemInUIList(menuItem)
     } 
     var innerDiv = document.createElement("div");
     innerDiv.classList.add("innerDiv");
-    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(menuItem);">Write a review.</a>';
+    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(\''+menuItem.name+'\');">Write a review.</a>';
     
     var outerDiv = document.createElement("div");
     outerDiv.classList.add("outerDiv");
