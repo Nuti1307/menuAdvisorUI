@@ -25,21 +25,43 @@ function handleLocationError(error)
 }
 function getRestaurant(location)
 {
-    var url = "https://api.locu.com/v1_0/venue/search/?location=";
-    url += location.coords.latitude;
-    url += "%2C%20";
-    url += location.coords.longitude;
-    url += "&category=restaurant";
-    url += "&radius=" + "8046"; // approx 5 miles
-    url += "&api_key="+ apiKey;
+    
     
     setDefaultRestaurantBasedOnCurrentLocation(location.coords.latitude, location.coords.longitude);
 
-    $.ajax({
-      dataType: "jsonp",
-      url: url,
-      success: getRestaurantSuccessCallback
-    });
+    $( "#restaurantname" ).autocomplete(
+	{
+		 source: function( request, response ) {
+            var url = "https://api.locu.com/v1_0/venue/search/?location=";
+            url += location.coords.latitude;
+            url += "%2C%20";
+            url += location.coords.longitude;
+            url += "&category=restaurant";
+            url += "&radius=" + "8046"; // approx 5 miles
+            url += "&api_key="+ apiKey;
+            url += "&name="+request.term;
+        $.ajax({
+          url: url,
+          dataType: "jsonp",          
+          success: function( data ) {
+              // We read each json result item and collect params we care. 
+              // Once the item gets selected, we can retrieve params.
+                response( $.map( data.objects, function( item ) { 
+                  return {
+                    label: item.name + ", " + item.locality,
+                    value: item.name + ", " + item.locality,
+                    locuid: item.id
+                  }
+               }));
+            }
+        });
+      },
+      minLength: 2,
+      select: function( event, ui ) { // This function is invoked when the drop down is selected.
+          globalData.restaurantLocuId = ui.item.locuid;
+          globalData.restaurantName = ui.item.label;
+      }
+	});
 }
 
 function compare(a,b) 
