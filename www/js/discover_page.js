@@ -25,7 +25,7 @@ function handleDiscover(evt){
 }
 function getAllDishFromDB(restaurentLocuId) {
     var url = "https://nodejs-menuadvisor.rhcloud.com/api/menulist?restaurantid=";
-    url += 'xyz'; // TODO: Remove later
+    url += restaurentLocuId;
     $.ajax({
         datatype: "jsonp",
         url: url,
@@ -216,7 +216,6 @@ function filter(element) {
 function displayMenuComment(data) {
     
     var menuListElement = document.getElementById("commentslist");
-    //menuListElement.children().remove(); // TODO: Remove existing elements before adding new items(remove is not working)
     for (var i = 0; i < data.length; i++)
     {
         var a = document.createElement("a");
