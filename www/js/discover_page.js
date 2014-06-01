@@ -238,7 +238,6 @@ function displayMenuComment(data) {
         li.appendChild(a);
         menuListElement.appendChild(li);        
     }
-    $('.rateit').rateit();
 }
 function populateMenuComments(menuid, name)
 {
