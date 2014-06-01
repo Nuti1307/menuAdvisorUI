@@ -8,6 +8,32 @@ var restaurantList = new Array();
 
 function populateAutoCompleteItems()
 {
+    $(document).ready(function() { 
+ 
+      // Setup the ajax indicator
+      $('body').append('<div id="ajaxBusy"><p><img src="images/loading.gif"></p></div>');
+
+      $('#ajaxBusy').css({
+        display:"block",
+        margin:"0px",
+        paddingLeft:"0px",
+        paddingRight:"0px",
+        paddingTop:"0px",
+        paddingBottom:"0px",
+        position:"absolute",
+        right:"3px",
+        top:"3px",
+        width:"auto"
+      });
+    });
+    jQuery.ajaxSetup({
+        beforeSend: function() {
+             $('#ajaxBusy').show(); 
+        },
+        complete: function(){
+             $('#ajaxBusy').hide();
+        }
+    });
     navigator.geolocation.getCurrentPosition(getRestaurant, handleLocationError);
 }
 function handleLocationError(error)
@@ -23,10 +49,9 @@ function handleLocationError(error)
     }
     
 }
+
 function getRestaurant(location)
 {
-    
-    
     setDefaultRestaurantBasedOnCurrentLocation(location.coords.latitude, location.coords.longitude);
 
     $( "#restaurantname" ).autocomplete(
