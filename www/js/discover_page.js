@@ -15,9 +15,12 @@ function handleDiscover(evt){
      else
      {
          var menuListElement = document.getElementById("discoverPageMenuList");
+         var filerMenu = document.getElementById("FilterMenuItems");
+         
          menuListElement.innerHTML = "";
          globalData.currentRestaurantName = globalData.restaurantName;
          globalMenuArray = [];
+         filerMenu.value = "";
      }
      
      elem.innerHTML = globalData.restaurantName;
