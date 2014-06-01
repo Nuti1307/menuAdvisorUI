@@ -207,7 +207,7 @@ function filter(element) {
     var value = $(element).val();
     $("#discoverPageMenuList > li").each(function () {
         var menuname = $(this).text();        
-        if (menuname.toLowerCase().indexOf(value) > -1) {
+        if (menuname.toLowerCase().indexOf(value.toLowerCase()) > -1) {
 
             $(this).show();
             
