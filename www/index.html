@@ -28,7 +28,7 @@
 		    //hide splash screen
         var onDeviceReady=function(){
             //hide splash screen
-             populateAutoCompleteItems();
+             setTimeout(populateAutoCompleteItems(), 0);
              intel.xdk.device.hideSplashScreen();            
  		};
         document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);

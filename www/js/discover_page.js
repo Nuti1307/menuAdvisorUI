@@ -6,7 +6,7 @@
 //$("#discoverbutton").click(function(evt)
 var globalMenuArray = [];
 function handleDiscover(evt){
-     setSelectedRestaurant();
+     
      var elem = document.getElementById("restaurentName");
      
      // Do not re-populate if it's the same restaurant. Otherwise reset everything.
@@ -21,7 +21,7 @@ function handleDiscover(evt){
      }
      
      elem.innerHTML = globalData.restaurantName;
-     getAllDishFromDB(globalData.restaurantLocuId);   
+     setTimeout(getAllDishFromDB(globalData.restaurantLocuId), 0);   
 }
 function getAllDishFromDB(restaurentLocuId) {
     var url = "https://nodejs-menuadvisor.rhcloud.com/api/menulist?restaurantid=";
@@ -121,10 +121,10 @@ function ActivateCommentsList(e)
         var menuItem = new Object();
         menuItem.name = menuItemName;
         menuItem.id = menuItemId;
-        activateRateScreen(menuItem);
+        setTimeout(activateRateScreen(menuItem), 0);
         return;
     }
-    populateMenuComments(menuItemId, menuItemName);
+    setTimeout(populateMenuComments(menuItemId, menuItemName), 0);
 }
 function activateRateScreen(menuName)
 {

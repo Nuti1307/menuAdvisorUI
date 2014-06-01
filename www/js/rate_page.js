@@ -2,7 +2,7 @@ function handleRate(evt){
      setSelectedRestaurant();
      var restaurentNameElem = document.getElementById("rate_restaurentName");
      restaurentNameElem.innerHTML = globalData.restaurantName;
-     getMenu(globalData.restaurantLocuId, getMenuCallback);
+     setTimeout(getMenu(globalData.restaurantLocuId, getMenuCallback), 0);
 }
 
 function submitRating()

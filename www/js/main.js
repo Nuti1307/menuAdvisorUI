@@ -52,7 +52,7 @@ function handleLocationError(error)
 
 function getRestaurant(location)
 {
-    setDefaultRestaurantBasedOnCurrentLocation(location.coords.latitude, location.coords.longitude);
+    setTimeout(setDefaultRestaurantBasedOnCurrentLocation(location.coords.latitude, location.coords.longitude), 0);
 
     $( "#restaurantname" ).autocomplete(
 	{
