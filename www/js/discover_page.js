@@ -45,7 +45,7 @@ function getAllDishFromDBSuccessCallback(data) {
    
     if (data.length < 10) {
         // if we do not get atleast numToDisplayInDiscoverPage from DB then display everything that we get from locu
-        getMenu(this.callbackData.restaurentLocuId, getMenuFromLocuSuccessCallback);
+        getMenu(globalData.restaurantLocuId, getMenuFromLocuSuccessCallback);
     }
     $('.rateit').rateit();
 }
