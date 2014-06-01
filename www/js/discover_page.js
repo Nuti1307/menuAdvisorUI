@@ -144,6 +144,8 @@ function activateRateScreen(menuName)
         }
     }
     document.getElementById("rate_menuList").selectedIndex = document.getElementById(menuName).index;
+    var d = $("#rate_menuList-button > span");
+    d[0].innerHTML = menuName;
 }
 
 function isDuplicateMenu(menuItem)
