@@ -62,6 +62,7 @@ function getRestaurant(location)
             url += "%2C%20";
             url += location.coords.longitude;
             url += "&category=restaurant";
+            url += "&has_menu=true";
             url += "&radius=" + "8046"; // approx 5 miles
             url += "&api_key="+ apiKey;
             url += "&name="+request.term;
@@ -178,6 +179,7 @@ function setDefaultRestaurantBasedOnCurrentLocation(lat, longitude)
     url += "%2C%20";
     url += longitude;
     url += "&category=restaurant";
+    url += "&has_menu=true";
     url += "&radius=" + "50"; // search within 50 meters
     url += "&api_key="+ apiKey;
     $.ajax({
