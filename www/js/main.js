@@ -63,7 +63,7 @@ function getRestaurant(location)
             url += location.coords.longitude;
             url += "&category=restaurant";
             url += "&has_menu=true";
-            url += "&radius=" + "8046"; // approx 5 miles
+            url += "&radius=" + "16000"; // approx 10 miles
             url += "&api_key="+ apiKey;
             url += "&name="+request.term;
         $.ajax({
@@ -162,11 +162,7 @@ function setDefaultRestaurantCallback(data)
 {
     var restaurantList = getRestaurantList(data);
     var restaurantElem = document.getElementById("restaurantname");
-    if (restaurantList.length == 0)
-    {
-        restaurantElem.value = "Enter restaurant name";
-    }
-    else
+    if (restaurantList.length != 0)
     {
         restaurantElem.value = restaurantList[0].name;
     }

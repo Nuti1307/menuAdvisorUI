@@ -13,13 +13,16 @@ function submitRating()
     var rating = $('#rateit').rateit('value');
     var jsonData = new Object();
     var picture = document.getElementById("picture").files[0];
+    var user = document.getElementById("user").value;
+    if (user == "")
+        user = "Anonymous";
 
     var newData = new FormData();
     newData.append("locu_id", globalData.restaurantLocuId);
     newData.append("restaurant_name", globalData.restaurantName);
     newData.append("menu_name", dishName);
     newData.append("rating", rating.toString());
-    newData.append("user_id", "1");
+    newData.append("user_id", user);
     newData.append("comment", comment);
     newData.append("upload_file", picture);
     callSubmitRatingApi(newData);

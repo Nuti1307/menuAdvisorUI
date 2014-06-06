@@ -276,7 +276,7 @@
 <body>
     <div data-role="page" id="main">
         <h1>Menu Advisor</h1>
-        <input type="text" id="restaurantname" onClick="Clear(this);"/>
+        <input type="text" id="restaurantname" placeholder="Enter restaurant name" onClick="Clear(this);"/>
         <a id="discoverbutton" data-role="button" href="#discover" onclick="handleDiscover()">Discover</a>
         <!-- <a id="ratebutton" data-role="button" href="#rate" onclick="handleRate()">Rate</a> -->
     </div>
@@ -292,6 +292,7 @@
         <input id="picture" type="file" accept="image/*" capture="camera">
         <br/>
         <textarea id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
+        <input id="user" type="text" placeholder="Name(Blank to be anonymous)"></input>
         <a class="submit" data-role="button" onclick="submitRating()">Submit</a>
     </div>
     <div data-role="page" id="discover">
