@@ -185,7 +185,10 @@ function insertMenuItemInUIList(menuItem)
     }
     else {      
         a.innerHTML = '<img src="images/question-mark.jpg"/>' + a.innerHTML;
-        a.onclick=populateRatingMenuItem;
+        a.href="#rate";
+        a.onclick= function() {
+            activateRateScreen(a.getElementsByTagName('h4')[0].innerHTML);
+        };
     } 
     var innerDiv = document.createElement("div");
     innerDiv.classList.add("innerDiv");
