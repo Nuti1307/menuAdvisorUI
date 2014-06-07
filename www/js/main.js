@@ -165,6 +165,8 @@ function setDefaultRestaurantCallback(data)
     if (restaurantList.length != 0)
     {
         restaurantElem.value = restaurantList[0].name;
+        globalData.restaurantName = restaurantList[0].name;
+        globalData.restaurantLocuId = restaurantList[i].locuId;
     }
 }
 
