@@ -188,5 +188,5 @@ function setDefaultRestaurantBasedOnCurrentLocation(lat, longitude)
 }
 function Clear(target)
 {
-    target.value = "";
+    $('#restaurantname').attr('placeholder','');
 }
