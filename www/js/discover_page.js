@@ -10,7 +10,8 @@ function handleDiscover(evt){
      var elem = document.getElementById("restaurentName");
      
      // Do not re-populate if it's the same restaurant. Otherwise reset everything.
-     if (globalData.currentRestaurantName == globalData.restaurantName)
+     if (globalData.refresh != true 
+         && globalData.currentRestaurantName == globalData.restaurantName)
          return;
      else
      {
@@ -21,6 +22,7 @@ function handleDiscover(evt){
          globalData.currentRestaurantName = globalData.restaurantName;
          globalMenuArray = [];
          filerMenu.value = "";
+         globalData.refresh = false;
      }
      
      elem.innerHTML = globalData.restaurantName;

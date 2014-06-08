@@ -3,6 +3,7 @@ var globalData = new Object();
 globalData.restaurantLocuId = "f079dc1e5d89c15f12c5";
 globalData.restaurantName = "testing";
 globalData.currentRestaurantName = "";
+globalData.refresh = false;
 
 var restaurantList = new Array();
 

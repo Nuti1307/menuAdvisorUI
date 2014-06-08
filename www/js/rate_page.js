@@ -16,7 +16,7 @@ function submitRating()
     var user = document.getElementById("user").value;
     if (user == "")
         user = "Anonymous";
-
+    
     var newData = new FormData();
     newData.append("locu_id", globalData.restaurantLocuId);
     newData.append("restaurant_name", globalData.restaurantName);
@@ -25,22 +25,26 @@ function submitRating()
     newData.append("user_id", user);
     newData.append("comment", comment);
     newData.append("upload_file", picture);
-    callSubmitRatingApi(newData);
-}
-
-function callSubmitRatingApi(body, dishName) { 
+    
     var url = "https://nodejs-menuadvisor.rhcloud.com/api/storerating";
     $.ajax({
       type: "POST",
       contentType:'multipart/form-data',
       url: url,
-      data: body,
+      data: newData,
       cache: false,
+      timeout: 5000,
       contentType: false,
       processData: false,
       success: function() {
+          globalData.refresh = true;
           handleDiscover();
-          $.mobile.changePage( $("#discover"), { transition: "slideup", changeHash: false });
-      }
+          document.getElementById('back_rate').click();
+      },
+      error: function(jqXHR, textStatus, errorThrown) 
+      {
+         handleDiscover();
+         document.getElementById('back_rate').click();
+      } 
     });
 }

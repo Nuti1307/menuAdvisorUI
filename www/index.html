@@ -269,6 +269,17 @@
             box-shadow: none;
             top:0.5em;
         }
+        div.ui-header a#back_rate {
+            background-image: url(images/backArrow.jpg);
+            background-color: white;
+            border: none;
+            background-repeat: no-repeat;
+            background-position: center center;
+            width:auto;
+            height: 5px;
+            box-shadow: none;
+            top:0.5em;
+        }
 
     </style>
 
@@ -278,11 +289,10 @@
         <h1>Menu Advisor</h1>
         <input type="text" id="restaurantname" placeholder="Enter restaurant name" onClick="Clear(this);"/>
         <a id="discoverbutton" data-role="button" href="#discover" onclick="handleDiscover()">Discover</a>
-        <!-- <a id="ratebutton" data-role="button" href="#rate" onclick="handleRate()">Rate</a> -->
     </div>
     <div data-role="page" id="rate">
         <div data-role="header">
-            <a id="back" data-rel="back"></a>
+            <a id="back_rate" data-rel="back"></a>
             <h2 id="rate_restaurentName">Restaurant Name</h2>
         </div>
         <select id="rate_menuList">
