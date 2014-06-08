@@ -41,17 +41,12 @@ function getAllDishFromDB(restaurentLocuId) {
 
 // do not call locu if we get N already from DB
 function getAllDishFromDBSuccessCallback(data) {
-    var numToDisplayInDiscoverPage = 10;
     for (var i = 0; i < data.length; i++)
     {
         data[i].isLocu = 0;
         insertMenuItemInUIList(data[i]);
     }
-   
-    if (data.length < 10) {
-        // if we do not get atleast numToDisplayInDiscoverPage from DB then display everything that we get from locu
-        getMenu(globalData.restaurantLocuId, getMenuFromLocuSuccessCallback);
-    }
+    getMenu(globalData.restaurantLocuId, getMenuFromLocuSuccessCallback);
     $('.rateit').rateit();
 }
                 
