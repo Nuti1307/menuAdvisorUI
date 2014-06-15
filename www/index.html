@@ -252,7 +252,8 @@
         #rate div.ui-input-text {
             width:80%;
         }
-        #rate a.submit {
+        #rate input.submit {
+            display: block;
             margin: 4em auto 2em auto;
             width:60%;
             background-color: white;
@@ -311,14 +312,11 @@
         </select>
         <div class="rateit" id="rateit" data-rateit-resetable="false" data-rateit-starwidth="32" data-rateit-starheight="32"></div>
         <input id="picture" type="file" accept="image/*" name="upload_file" capture="camera">
-        <br/>
         <input name="locu_id" id="rate_locu_id" value="xyz" type="hidden"/>
         <input name="restaurant_name" id="rate_restaurant_name" value="mayuri" type="hidden"/>
         <input name="rating" id="rate_rating" value="0" type="hidden"/>
         <textarea name="comment" id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
         <input id="user" name="user_id" type="text" placeholder="Name(Blank to be anonymous)"></input>
-        <br/>
-        <br/>
         <input onClick="HandleRateSubmit()" id="rate_submit" type="submit" class="submit" data-role="button"/>
     </form>
     
