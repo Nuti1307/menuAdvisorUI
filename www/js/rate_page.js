@@ -17,21 +17,20 @@ function submitRating()
     if (user == "")
         user = "Anonymous";
     
-    var newData = new FormData();
+    /*var newData = new FormData();
     newData.append("locu_id", globalData.restaurantLocuId);
     newData.append("restaurant_name", globalData.restaurantName);
     newData.append("menu_name", dishName);
     newData.append("rating", rating.toString());
     newData.append("user_id", user);
     newData.append("comment", comment);
-    newData.append("upload_file", picture);
-    
+    newData.append("upload_file", picture);   
     var url = "https://nodejs-menuadvisor.rhcloud.com/api/storerating";
     $.ajax({
       type: "POST",
       contentType:'multipart/form-data',
       url: url,
-      data: newData,
+      data:  newData,
       cache: false,
       timeout: 5000,
       contentType: false,
@@ -46,5 +45,28 @@ function submitRating()
          handleDiscover();
          document.getElementById('back_rate').click();
       } 
-    });
+    });*/
+}
+
+function HandleRateSubmit()
+{
+    RatePopulateValues();
+    handleDiscover();
+    
+    //document.getElementById('rate_form').submit();
+}
+
+function RateBack()
+{
+    $.mobile.changePage("#discover");
+}
+function RatePopulateValues()
+{
+    var rating = $('#rateit').rateit('value');
+    var locuid = document.getElementById('rate_locu_id');
+    var restaurant_name = document.getElementById('rate_restaurant_name');
+    var rate_rating = document.getElementById('rate_rating');
+    rate_rating.value = rating.toString();
+    restaurant_name.value = globalData.restaurantName;
+    locuid.value = globalData.restaurantLocuId;    
 }

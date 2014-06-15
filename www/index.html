@@ -4,25 +4,24 @@
 	<title>Your New Application</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-	<style type="text/css">
-		/* Prevent copy paste for all elements except text fields */
-		*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
-		input, textarea  { -webkit-user-select:text; }
-		body { background-color:white; color:black }
-	</style>
-	<script src='intelxdk.js'></script>
-    <script src="cordova.js"></script>
-    <script src="xhr.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-    <link href="css/jquery-ui.css" rel="stylesheet">
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <script src="js/main.js"></script>
+    
+    <script type="text/javascript" src="xhr.js"></script>
+    <script type="text/javascript" src="intelxdk.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.2.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jq.appframework.js"></script>
+    
+    <script src="js/main.js"></script>    
+    <script src="js/locu.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/discover_page.js"></script>
+    <script src="js/menuItemDetails_page.js"></script>
+    <script src="js/rate_page.js"></script>    
+    <script src="ratingStarFiles/jquery.rateit.js" type="text/javascript"></script>
     <script type="text/javascript">
 		/* This code is used to run as soon as Intel activates */
 		    //hide splash screen
@@ -33,14 +32,25 @@
  		};
         document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
 		onDeviceReady();
+        var form = document.getElementById('rate_form');
+
+        if (form.attachEvent) {
+            form.attachEvent('submit', MovetoDiscover);
+        } else {
+            form.addEventListener('submit', MovetoDiscover);
+        }
 	</script>
-    <script src="js/locu.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/discover_page.js"></script>
-    <script src="js/menuItemDetails_page.js"></script>
-    <script src="js/rate_page.js"></script>
+    
     <link href="ratingStarFiles/rateit.css" rel="stylesheet" type="text/css">
-    <script src="ratingStarFiles/jquery.rateit.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+		/* Prevent copy paste for all elements except text fields */
+		*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+		input, textarea  { -webkit-user-select:text; }
+		body { background-color:white; color:black }
+	</style>
     <style>
         h1 {
         font-family: 'Lobster', cursive; 
@@ -295,15 +305,23 @@
             <a id="back_rate" data-rel="back"></a>
             <h2 id="rate_restaurentName">Restaurant Name</h2>
         </div>
-        <select id="rate_menuList">
+    <form onsubmit="RateBack()" id="rate_form" method='POST' enctype='multipart/form-data' action='https://nodejs-menuadvisor.rhcloud.com/api/storerating'>
+        <select id="rate_menuList" name="menu_name">
             <option value="">Select Menu ...</option>
         </select>
         <div class="rateit" id="rateit" data-rateit-resetable="false" data-rateit-starwidth="32" data-rateit-starheight="32"></div>
-        <input id="picture" type="file" accept="image/*" capture="camera">
+        <input id="picture" type="file" accept="image/*" name="upload_file" capture="camera">
         <br/>
-        <textarea id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
-        <input id="user" type="text" placeholder="Name(Blank to be anonymous)"></input>
-        <a class="submit" data-role="button" onclick="submitRating()">Submit</a>
+        <input name="locu_id" id="rate_locu_id" value="xyz" type="hidden"/>
+        <input name="restaurant_name" id="rate_restaurant_name" value="mayuri" type="hidden"/>
+        <input name="rating" id="rate_rating" value="0" type="hidden"/>
+        <textarea name="comment" id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
+        <input id="user" name="user_id" type="text" placeholder="Name(Blank to be anonymous)"></input>
+        <br/>
+        <br/>
+        <input onClick="HandleRateSubmit()" id="rate_submit" type="submit" class="submit" data-role="button"/>
+    </form>
+    
     </div>
     <div data-role="page" id="discover">
         <div data-role="header">
