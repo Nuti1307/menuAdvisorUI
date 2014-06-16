@@ -116,15 +116,20 @@ function ActivateCommentsList(e)
     }
     var menuItemName = targ.getAttribute('data-menuitemsdata-name');
     var menuItemId = targ.getAttribute('data-menuitemsdata-id');
-    if (targ.tagName == "A")
+    var menutitleElem = document.getElementById("menu_detail_name");
+    if(menutitleElem.innerHTML !== menuItemName)
     {
-        var menuItem = new Object();
-        menuItem.name = menuItemName;
-        menuItem.id = menuItemId;
-        setTimeout(activateRateScreen(menuItem), 0);
-        return;
+        
+        if (targ.tagName == "A")
+        {
+            var menuItem = new Object();
+            menuItem.name = menuItemName;
+            menuItem.id = menuItemId;
+            setTimeout(activateRateScreen(menuItem), 0);
+            return;
+        }
+        setTimeout(populateMenuComments(menuItemId, menuItemName), 0);
     }
-    setTimeout(populateMenuComments(menuItemId, menuItemName), 0);
 }
 function activateRateScreen(menuName)
 {
@@ -221,6 +226,7 @@ function filter(element) {
 function displayMenuComment(data) {
     
     var menuListElement = document.getElementById("commentslist");
+    menuListElement.innerHTML = "";
     for (var i = 0; i < data.length; i++)
     {
         var a = document.createElement("a");
