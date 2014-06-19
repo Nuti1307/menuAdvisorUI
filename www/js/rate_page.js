@@ -70,3 +70,9 @@ function RatePopulateValues()
     restaurant_name.value = globalData.restaurantName;
     locuid.value = globalData.restaurantLocuId;    
 }
+
+function resetRateScreenValues()
+{
+    $('#rateit').rateit('reset');
+    document.getElementById("rate_form").reset();
+}
