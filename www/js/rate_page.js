@@ -66,9 +66,11 @@ function RatePopulateValues()
     var locuid = document.getElementById('rate_locu_id');
     var restaurant_name = document.getElementById('rate_restaurant_name');
     var rate_rating = document.getElementById('rate_rating');
+    var userid = document.getElementById('user');
     rate_rating.value = rating.toString();
     restaurant_name.value = globalData.restaurantName;
-    locuid.value = globalData.restaurantLocuId;    
+    locuid.value = globalData.restaurantLocuId;  
+    userid.value = globalData.fbUserId;
 }
 
 function resetRateScreenValues()
