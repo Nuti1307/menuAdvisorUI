@@ -33,6 +33,8 @@ function populateAutoCompleteItems()
         },
         complete: function(){
              $('#ajaxBusy').hide();
+             if($.mobile.activePage[0].id === "splash")
+                $.mobile.changePage("#main");
         }
     });
     navigator.geolocation.getCurrentPosition(getRestaurant, handleLocationError);

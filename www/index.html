@@ -291,11 +291,18 @@
             box-shadow: none;
             top:0.5em;
         }
-
+        div#splash {
+            width: 100%;
+            height: 100%;
+            background: url(images/food.gif) center center no-repeat;
+            background-color: white;
+        }
     </style>
 
 </head>
 <body>
+    <div data-role="page" id="splash">
+    </div>
     <div data-role="page" id="main">
         <h1>Menu Advisor</h1>
         <input type="text" id="restaurantname" placeholder="Enter restaurant name" onClick="Clear(this);"/>
