@@ -69,15 +69,20 @@ function getPictureHTML(menuItem, id)
       url: url,
       dataType: 'json',
       success: function (data) {
+        if (data.length == 0)
+            return;
         
-        if (data.length > 0 && data[0].picture != "undefined" && data[0].picture.length > 4)
+        if (data[0].picture == "undefined" || data[0].picture.length < 4)
         {
-            var menuListElement = document.getElementById(id);            
-            ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '"/>';   
-            
-            menuListElement.innerHTML = ret + menuListElement.innerHTML;
-            menuListElement.onclick=ActivateCommentsList; 
+            ret += '<img src="images/question-mark.jpg"/>';
         }
+        else
+        {
+            ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '"/>';
+        }
+        var menuListElement = document.getElementById(id);            
+        menuListElement.innerHTML = ret + menuListElement.innerHTML;
+        menuListElement.onclick=ActivateCommentsList; 
       }
     });
     
