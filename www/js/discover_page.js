@@ -78,7 +78,8 @@ function getPictureHTML(menuItem, id)
         }
         else
         {
-            ret += '<img src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '"/>';
+            var idval = "img"+id;
+            ret += '<img id='+idval+' src="https://nodejs-menuadvisor.rhcloud.com/' + data[0].picture + '"/>';
         }
         var menuListElement = document.getElementById(id);            
         menuListElement.innerHTML = ret + menuListElement.innerHTML;
@@ -169,6 +170,12 @@ function isDuplicateMenu(menuItem)
     return false;
 }
 
+function createAttrib(attribname, value, node)
+{
+    var attr = document.createAttribute (attribname);
+    attr.value = value;
+    node.setAttributeNode (attr);
+}
 function insertMenuItemInUIList(menuItem)
 {
     if (isDuplicateMenu(menuItem))
@@ -200,7 +207,18 @@ function insertMenuItemInUIList(menuItem)
     } 
     var innerDiv = document.createElement("div");
     innerDiv.classList.add("innerDiv");
-    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(\''+menuItem.name+'\');">Write a review.</a>';
+    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(\''+menuItem.name+'\');"><br/>Write a review.</a>';
+    
+    var Item = menuItem;
+    //innerDiv.innerHTML += '<a href="#" onclick="fbShare(this)" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'"><br/>Share</a>';
+    var sh = document.createElement("a");
+    sh.href = "#";
+    sh.onclick = fbShare;
+    createAttrib('data-menuitemsdata-name', menuItem.name, sh);
+    createAttrib('data-menuitemsdata-id', i, sh);
+    
+    sh.innerHTML += "Share";
+    innerDiv.appendChild(sh);
     
     var outerDiv = document.createElement("div");
     outerDiv.classList.add("outerDiv");

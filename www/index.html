@@ -309,7 +309,7 @@
             <br/>
             <br/>
             <br/>
-            <<div align="center" id="fbbutton" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-auto-logout-link="false"></div>
+            <div align="center" id="fbbutton" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-auto-logout-link="false"></div>
             <br/>
             <br/>
         <!--    <button type="button" onclick="checkLoginState()">Login With Facebook</button>  -->
@@ -336,7 +336,7 @@
         <input name="restaurant_name" id="rate_restaurant_name" value="mayuri" type="hidden"/>
         <input name="rating" id="rate_rating" value="0" type="hidden"/>
         <textarea name="comment" id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
-        <input id="user" name="user_id" type="text" placeholder="Name(Blank to be anonymous)"></input>
+        <input id="user" name="user_id" type="hidden"></input>
         <input onClick="HandleRateSubmit()" id="rate_submit" type="submit" class="submit" data-role="button"/>
     </form>
     
@@ -344,7 +344,7 @@
     <div data-role="page" id="discover">
         <div data-role="header">
             <a id="back" data-rel="back"></a>
-            <h2 id="restaurentName"></h2>
+            <h2 id="restaurentName"></h2>   
         </div>
         <input id="FilterMenuItems" type="search" name="search-mini" onkeyup="filter(this)" data-mini="true" placeholder="Search" results="0"/> 
         <ol id="discoverPageMenuList">

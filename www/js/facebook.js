@@ -2,9 +2,33 @@ function SkipFB()
 {
     $.mobile.changePage("#homepage");
 }
-function SkipFB()
+function MovetoRatePage()
 {
-    $.mobile.changePage("#homepage");
+    $.mobile.changePage("#rateit");
+}
+
+function fbShare(e)
+{
+    var targ;
+    if (e.target) {
+        targ=e.target;
+    }
+    else if (e.srcElement) {
+        targ=e.srcElement;
+    }
+    var name = targ.getAttribute('data-menuitemsdata-name');
+    var id = targ.getAttribute('data-menuitemsdata-id');
+    
+    FB.ui(
+    {
+        method: 'feed',
+        name: 'Check out this menu.',
+        link: 'menuadvisor.azurewebsites.net',
+        picture: $('#img'+id).attr('src'),
+        caption: 'I have been at ' + globalData.restaurantName + '.',
+        description: 'I tried ' + name +'.',
+        message: ''
+    });
 }
 function initFB()
 {
