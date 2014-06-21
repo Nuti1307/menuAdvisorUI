@@ -37,6 +37,9 @@
     <div id="fb-root"></div>
     <script>
       initFB();
+    $(document).ready(function() {
+       $('#homepage').on( "pageshow", onPageLoad);
+    });
     </script>
       
     <link href="ratingStarFiles/rateit.css" rel="stylesheet" type="text/css">
@@ -108,11 +111,7 @@
             height:auto;
             width:auto;
         }
-/*      
-        #discover a#header {
-            margin: 8px 0 0 8px;
-        }
-*/
+
         #discover div.ui-input-text {
             display: inline-block;
             width:70%;
@@ -188,15 +187,6 @@
             left: 120px; 
             bottom: 10px;
         }
-/*        
-        #rate h2 {
-        font-family: 'Lobster', cursive; 
-        font-size: 2em;
-        text-align: center;
-        color: black;
-        text-shadow: -1px 0 #ccc, 0 3px #ccc, 3px 0 #ccc, 0 -1px #ccc;
-        }
-*/        
         #rate div {
             margin-left: auto;
             margin-right: auto;
@@ -301,25 +291,16 @@
 <body>
     <div data-role="page" id="splash">
     </div>
-    <div data-role="page" id="main">
-        <div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <div align="center" id="fbbutton" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-auto-logout-link="false"></div>
-            <br/>
-            <br/>
-        <!--    <button type="button" onclick="checkLoginState()">Login With Facebook</button>  -->
-            <button type="button" onclick="SkipFB()">Skip</button>
-        </div>
-    </div>
     <div data-role="page" id="homepage">
         <h1>Menu Advisor</h1>
         <input type="text" id="restaurantname" placeholder="Enter restaurant name" onClick="Clear(this);"/>
         <a id="discoverbutton" data-role="button" href="#discover" onclick="handleDiscover()">Discover</a>
+        <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all" data-history="false">
+            <div style="padding:10px 20px;">
+                <div align="center" id="fbbutton" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-auto-logout-link="false"></div>
+                <button type="button" onclick="SkipFB()">Skip</a>
+            </div>
+        </div>
     </div>
     <div data-role="page" id="rate">
         <div data-role="header">

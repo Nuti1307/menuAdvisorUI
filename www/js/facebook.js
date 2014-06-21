@@ -1,6 +1,6 @@
 function SkipFB()
 {
-    $.mobile.changePage("#homepage");
+    $( "#popupLogin" ).popup( "close" );
 }
 function MovetoRatePage()
 {

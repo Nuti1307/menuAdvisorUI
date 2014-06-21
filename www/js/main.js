@@ -37,7 +37,7 @@ function populateAutoCompleteItems()
         complete: function(){
              $('#ajaxBusy').hide();
              if($.mobile.activePage[0].id === "splash")
-                $.mobile.changePage("#main");
+                $.mobile.changePage("#homepage");
         }
     });
     navigator.geolocation.getCurrentPosition(getRestaurant, handleLocationError);
@@ -196,4 +196,15 @@ function Clear(target)
 {
     target.value = "";
     $('#restaurantname').attr('placeholder','');
+}
+
+
+function onPageLoad() {
+    // check if already logged in
+    var showDialog = true;
+    if(showDialog)
+    {
+        $( "#popupLogin" ).popup();
+        $( "#popupLogin" ).popup( "open" );
+    }
 }
