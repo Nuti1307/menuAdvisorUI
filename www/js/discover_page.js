@@ -83,7 +83,6 @@ function getPictureHTML(menuItem, id)
         }
         var menuListElement = document.getElementById(id);            
         menuListElement.innerHTML = ret + menuListElement.innerHTML;
-        menuListElement.onclick=ActivateCommentsList; 
       }
     });
     
@@ -191,6 +190,7 @@ function insertMenuItemInUIList(menuItem)
     
     a.innerHTML = "<h4 data-menuitemsdata-name='"+menuItem.name+ "' data-menuitemsdata-id='"+menuItem.id +"' >"+menuItem.name+"</h4>";  
     a.id=++i;
+    a.onclick=ActivateCommentsList; 
     
     if (typeof menuItem.avg_rating != "undefined") { 
         a.innerHTML += "<div class=\"rateit\" data-rateit-value=\"" + menuItem.avg_rating +"\" data-rateit-ispreset=\"true\" data-rateit-readonly=\"true\"></div>";    
