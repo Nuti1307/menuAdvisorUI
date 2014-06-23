@@ -207,7 +207,7 @@ function insertMenuItemInUIList(menuItem)
     } 
     var innerDiv = document.createElement("div");
     innerDiv.classList.add("innerDiv");
-    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(\''+menuItem.name+'\');"><br/>Write a review.</a>';
+    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(\''+menuItem.name+'\');"><img src="images/writereview1.jpg"/></a>';
     
     var Item = menuItem;
     //innerDiv.innerHTML += '<a href="#" onclick="fbShare(this)" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'"><br/>Share</a>';
@@ -217,7 +217,7 @@ function insertMenuItemInUIList(menuItem)
     createAttrib('data-menuitemsdata-name', menuItem.name, sh);
     createAttrib('data-menuitemsdata-id', i, sh);
     
-    sh.innerHTML += "Share";
+    sh.innerHTML += '<img src="images/share.png"/>';
     innerDiv.appendChild(sh);
     
     var outerDiv = document.createElement("div");
