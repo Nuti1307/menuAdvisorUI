@@ -201,7 +201,7 @@ function Clear(target)
 
 function onPageLoad() {
     // check if already logged in
-    var showDialog = true;
+    var showDialog = globalData.fbUserId === "";
     if(showDialog)
     {
         $( "#popupLogin" ).popup();
