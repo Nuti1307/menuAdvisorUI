@@ -31,6 +31,11 @@
              setTimeout(populateAutoCompleteItems(), 0);
              intel.xdk.device.hideSplashScreen();            
  		};
+        if (localStorage.skipped == true)
+        {
+            $('#popupLogin').hide();
+        }
+        
         document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
 		onDeviceReady();
 	</script>
@@ -322,6 +327,7 @@
         <select id="rate_menuList" name="menu_name">
             <option value="">Select Menu ...</option>
         </select>
+        <label align="center" id="labeluser">User: Anonymous         <img onclick="fbrateicon_click()" src="images/fb_small.png"></img></label>
         <div class="rateit" id="rateit" data-rateit-resetable="false" data-rateit-starwidth="32" data-rateit-starheight="32"></div>
         <input id="picture" type="file" accept="image/*" name="upload_file" capture="camera">
         <input name="locu_id" id="rate_locu_id" value="xyz" type="hidden"/>

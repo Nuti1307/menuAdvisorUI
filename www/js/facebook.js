@@ -1,10 +1,36 @@
 function SkipFB()
 {
+    localStorage.skipped = true;
     $( "#popupLogin" ).popup( "close" );
 }
 function MovetoRatePage()
 {
     $.mobile.changePage("#rateit");
+}
+function AddUserNametoRate()
+{
+    FB.api('/me', function(response) {
+        var label = document.getElementById("labeluser");
+        label.innerHTML = "User: " + response.first_name + " " + response.last_name;    
+    });  
+}
+function fbrateicon_click()
+{
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+         AddUserNametoRate();
+      }           
+      else { // User not logged in ask permissions.
+            FB.login(function(response) {
+           if (response.authResponse) {
+             AddUserNametoRate();
+             MovetoRatePage();
+           } else {
+             console.log('User cancelled login or did not fully authorize.');
+           }
+         });
+      }
+     });
 }
 
 function fbShare(e)
