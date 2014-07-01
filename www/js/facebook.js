@@ -1,6 +1,5 @@
 function SkipFB()
 {
-    localStorage.skipped = true;
     $( "#popupLogin" ).popup( "close" );
 }
 function MovetoRatePage()

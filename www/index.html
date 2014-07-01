@@ -31,22 +31,11 @@
              setTimeout(populateAutoCompleteItems(), 0);
              intel.xdk.device.hideSplashScreen();            
  		};
-        if (localStorage.skipped == true)
-        {
-            $('#popupLogin').hide();
-        }
-        
         document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
 		onDeviceReady();
+        initFB();
 	</script>
-    <div id="fb-root"></div>
-    <script>
-      initFB();
-    $(document).ready(function() {
-       $('#homepage').on( "pageshow", onPageLoad);
-    });
-    </script>
-      
+    
     <link href="ratingStarFiles/rateit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <link href="css/jquery-ui.css" rel="stylesheet">
