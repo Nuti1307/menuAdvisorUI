@@ -142,7 +142,9 @@ function ActivateCommentsList(e)
             setTimeout(activateRateScreen(menuItem), 0);
             return;
         }
-        populateMenuComments(menuItemId, menuItemName);
+        setTimeout(function() {
+            populateMenuComments(menuItemId, menuItemName);            
+        }, 1000);
     }
 }
 function activateRateScreen(menuName)
