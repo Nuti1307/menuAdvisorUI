@@ -6,7 +6,16 @@
 //$("#discoverbutton").click(function(evt)
 var globalMenuArray = [];
 function handleDiscover(evt){
-     
+    
+     // If we do not know locuid for this restaurant then do not proceed to 
+     // discover page for now. In future we should remove and handle this flow.
+     if (typeof globalData.restaurantLocuId == 'undefined' || 
+         globalData.restaurantLocuId == "")
+     {
+         alert("Restaurant not found !!");
+         return false;
+     }
+    
      var elem = document.getElementById("restaurentName");
      
      // Do not re-populate if it's the same restaurant. Otherwise reset everything.
@@ -26,7 +35,7 @@ function handleDiscover(evt){
      }
      
      elem.innerHTML = globalData.restaurantName;
-     setTimeout(getAllDishFromDB(globalData.restaurantLocuId), 0);   
+     getAllDishFromDB(globalData.restaurantLocuId);   
 }
 function getAllDishFromDB(restaurentLocuId) {
     var url = "https://nodejs-menuadvisor.rhcloud.com/api/menulist?restaurantid=";

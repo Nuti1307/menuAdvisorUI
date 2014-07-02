@@ -72,6 +72,9 @@ function getRestaurant(location)
             url += "&radius=" + "16000"; // approx 10 miles
             url += "&api_key="+ apiKey;
             url += "&name="+request.term;
+             
+            globalData.restaurantLocuId = "";
+             
         $.ajax({
           url: url,
           dataType: "jsonp",          
