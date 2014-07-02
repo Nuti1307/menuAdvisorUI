@@ -1,7 +1,7 @@
 <!DOCTYPE html><!--HTML5 doctype-->
 <html>
 <head>
-	<title>Your New Application</title>
+	<title>Menu Advisor</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -302,7 +302,7 @@
         <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all" data-history="false">
             <div style="padding:10px 20px;">
                 <div align="center" id="fbbutton" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-auto-logout-link="false"></div>
-                <button type="button" onclick="SkipFB()">Skip</a>
+                <button type="button" onclick="SkipFB()">Skip</button>
             </div>
         </div>
     </div>
@@ -315,16 +315,16 @@
         <select id="rate_menuList" name="menu_name">
             <option value="">Select Menu ...</option>
         </select>
-        <label align="center" id="labeluser">User: Anonymous         <img onclick="fbrateicon_click()" src="images/fb_small.png"></img></label>
+        <label align="center" id="labeluser">User: Anonymous         <img onclick="fbrateicon_click()" src="images/fb_small.png"/></label>
         <div class="rateit" id="rateit" data-rateit-resetable="false" data-rateit-starwidth="32" data-rateit-starheight="32"></div>
         <input id="picture" type="file" accept="image/*" name="upload_file" capture="camera">
         <input name="locu_id" id="rate_locu_id" value="xyz" type="hidden"/>
         <input name="restaurant_name" id="rate_restaurant_name" value="mayuri" type="hidden"/>
         <input name="rating" id="rate_rating" value="0" type="hidden"/>
         <textarea name="comment" id="comment" placeholder="Write Comment ..." rows="2" wrap="soft"></textarea>
-        <input id="user" name="user_id" type="hidden"></input>
-        <input id="username" name="username" type="hidden"></input>
-        <input id="useremail" name="useremail" type="hidden"></input>
+        <input id="user" name="user_id" type="hidden"/>
+        <input id="username" name="username" type="hidden"/>
+        <input id="useremail" name="useremail" type="hidden"/>
         <input onClick="HandleRateSubmit()" id="rate_submit" type="submit" class="submit" data-role="button"/>
     </form>
     
