@@ -218,7 +218,7 @@ function insertMenuItemInUIList(menuItem)
     } 
     var innerDiv = document.createElement("div");
     innerDiv.classList.add("innerDiv");
-    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(\''+menuItem.name+'\');"><img src="images/WriteReview1.jpg"/></a>';
+    innerDiv.innerHTML += '<a id="review_button" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'" href="#rate" onclick="activateRateScreen(\''+menuItem.name+'\');"><img src="images/writereview1.jpg"/></a>';
     
     var Item = menuItem;
     //innerDiv.innerHTML += '<a href="#" onclick="fbShare(this)" data-menuitemsdata-name="'+menuItem.name+ '" data-menuitemsdata-id="'+menuItem.id +'"><br/>Share</a>';
