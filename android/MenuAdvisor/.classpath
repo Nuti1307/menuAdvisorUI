@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="platforms/android/FacebookLib"/>
+	<classpathentry kind="src" path="plugins/org.apache.cordova.inappbrowser"/>
+	<classpathentry kind="src" path="plugins/org.apache.cordova.geolocation"/>
+	<classpathentry kind="src" path="platforms/android/libs"/>
+	<classpathentry kind="src" path="platforms/android/cordova"/>
+	<classpathentry kind="src" path="plugins/com.phonegap.plugins.facebookconnect"/>
+	<classpathentry kind="src" path="FacebookLib"/>
+	<classpathentry kind="src" path="plugins/org.apache.cordova.device"/>
+	<classpathentry kind="src" path="platforms/android/CordovaLib"/>
+	<classpathentry kind="src" path="plugins/org.apache.cordova.dialogs"/>
+	<classpathentry kind="src" path="plugins/org.apache.cordova.console"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

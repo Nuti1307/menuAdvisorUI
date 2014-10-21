@@ -1,0 +1,6 @@
+# view AndroidManifest.xml #generated:17
+-keep class com.facebook.LoginActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:10
+-keep class com.phonegap.menuadvisor.MenuAdvisor { <init>(...); }
+
